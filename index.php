@@ -17,8 +17,6 @@
 		include 'header.php';
 		include 'navbar.php';
 
-		//Mostramos los mensajes de acuerdo a la respuesta del menu inicio de sesión
-
 		if (isset($_SESSION['aviso']) && isset($_SESSION['mensaje'])) 
 		{
 			if ($_SESSION['aviso'] == "nologin") 
