@@ -1,0 +1,26 @@
+.container {
+    width:40%;
+    margin: auto;
+    border-style: groove;
+    margin-top: 20px;
+}
+.card-header {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: black;
+    font-weight: bold;
+}
+
+input {
+    color: black;
+    font-weight: bold;
+}
+
+.center {
+    text-align: center;
+}
+
+p {
+    margin: auto;
+}

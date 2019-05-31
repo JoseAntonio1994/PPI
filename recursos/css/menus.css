@@ -1,0 +1,9 @@
+.row > .col-sm-1 {
+	padding: 25px 100px 10px 100px;
+}
+ p {
+	text-align: center;
+	color: black;
+	font-family: serif;
+	margin-top: 20px;
+}
