@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Configuración</title>
+	<title>Usuarios</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -21,20 +21,20 @@
 
 	<div class="container">
 		<center>
-			<h3>Configuración</h3>
+			<h3>Usuarios</h3>
 		</center>
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="col-sm-2">
-					<a href="usuarios.php"><img src="recursos/img/servicio.png" class="img-circle" alt="Cinque Terre" width="150px" height="150px"></a>
+					<a href=""><img src="recursos/img/servicio.png" class="img-thumbnail" alt="Cinque Terre" width="150px" height="150px"></a>
 					<center>
-						<label class="menu-conf">Usuarios</label>
+						<label class="menu-conf">Registro manual de usuarios</label>
 					</center>
 				</div>
 				<div class="col-sm-2">
-					<img src="recursos/img/grafico.png" class="img-circle" alt="Cinque Terre" width="150px" height="150px">
+					<a href=""><img src="recursos/img/tutorias/grupos.png" class="img-thumbnail" alt="Cinque Terre" width="150px" height="150px"></a>
 					<center>
-						<label class="menu-conf">Indicadores estadisticos</label>
+						<label class="menu-conf">Consulta de usuarios</label>
 					</center>
 				</div>
 			</div>
