@@ -3,6 +3,6 @@ session_start();
 session_unset();
 session_destroy();
 
-header("Location: http://localhost/procesos/");
+header("Location: http://localhost/PPI/");
 die();
 ?>

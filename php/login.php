@@ -26,18 +26,18 @@
 				$_SESSION['idroles'] = $row['idroles'];
 				
 
-				header("Location: http://localhost/procesos/");
+				header("Location: http://localhost/PPI/");
 			} else {
 				$_SESSION['aviso'] = "nologin";
 				$_SESSION['mensaje'] = "Usuario o contraseña incorrectos";
 				$conn->close();
-				header("Location: http://localhost/procesos/");
+				header("Location: http://localhost/PPI/");
 			}
 		} else {
 			$_SESSION['aviso'] = "errorlogin";
 			$_SESSION['mensaje'] = "Error al acceder a la plataforma";
 			$conn->close();
-			header("Location: http://localhost/procesos/");
+			header("Location: http://localhost/PPI/");
 		}
 	}
 ?>

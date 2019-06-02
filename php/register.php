@@ -25,7 +25,7 @@
 		$_SESSION['aviso'] = "noregister";
 		$_SESSION['mensaje'] = "Error al registrar a un usuario";
 		$conn->close();
-		header("Location: http://localhost/procesos/");
+		header("Location: http://localhost/PPI/");
 		die();
 	}
 

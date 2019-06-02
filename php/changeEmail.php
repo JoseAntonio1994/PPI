@@ -15,13 +15,13 @@
 			$_SESSION['mensaje'] = "Los cambios se han guardado satisfactoriamente";
 			updateEmail();
 			$conn->close();
-		    header("Location: http://localhost/procesos/perfil.php");
+		    header("Location: http://localhost/PPI/perfil.php");
 		    die();
 		} else {
 			$_SESSION['aviso'] = "no";
 			$_SESSION['mensaje'] = "No se pudo cambiar el correo electrónico";
 			$conn->close();
-		    header("Location: http://localhost/procesos/perfil.php");
+		    header("Location: http://localhost/PPI/perfil.php");
 			die();
 		}
 	}
@@ -30,7 +30,7 @@
 		$_SESSION['aviso'] = "error";
 		$_SESSION['mensaje'] = "La contraseña es incorrecta";
 		$conn->close();
-		header("Location: http://localhost/procesos/perfil.php");
+		header("Location: http://localhost/PPI/perfil.php");
 		die();
 	}
 
