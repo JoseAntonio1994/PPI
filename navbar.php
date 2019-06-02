@@ -18,7 +18,7 @@
 
                     if ($_SESSION['idroles'] == 1) 
                     {
-                        echo "<a href='' class='nav navbar-nav navbar-right'><span class='glyphicon glyphicon-cog'></span> Configuración</a>";
+                        echo "<a href='configuracion.php' class='nav navbar-nav navbar-right'><span class='glyphicon glyphicon-cog'></span> Configuración</a>";
                     }
                 }
                 else {
