@@ -32,7 +32,7 @@
 					</center>
 				</div>
 				<div class="col-sm-2">
-					<a href=""><img src="recursos/img/tutorias/grupos.png" class="img-thumbnail" alt="Cinque Terre" width="150px" height="150px"></a>
+					<a href="consultaUsuarios.php"><img src="recursos/img/tutorias/grupos.png" class="img-thumbnail" alt="Cinque Terre" width="150px" height="150px"></a>
 					<center>
 						<label class="menu-conf">Consulta de usuarios</label>
 					</center>
