@@ -64,18 +64,10 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <center>
           	<h4 class="modal-title">Registro de Usuarios</h4>
-          </center>
-          <div class="alert alert-danger alert-dismissible" style="display: none" id="sin-espacio">
-		    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		    <strong>Error!</strong> La contraseña no puede contener espacios en blanco.
-		  </div>
-		  <div class="alert alert-danger alert-dismissible" style="display: none" id="deben-coincidir">
-		    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		    <strong>Error!</strong> Las passwords deben de coincidir.
-		  </div>
+          </center>    
         </div>
         <div class="modal-body">
-          <form method="POST" action="php/register.php" onsubmit="return validarPassword()">
+          <form method="POST" action="php/register.php">
                    
 	            <div class="form-group row">
 	                <label for="usuario" class="col-md-4 col-form-label text-md-right">Usuario</label>
@@ -118,7 +110,7 @@
 	                <label for="password" class="col-md-4 col-form-label text-md-right">Contraseña</label>
 
 	                <div class="col-md-6">
-	                    <input id="password" type="password" class="form-control" name="password" required autocomplete="current-password">
+	                    <input id="contra" type="password" class="form-control" name="password" required autocomplete="current-password">
 	                </div>
 	            </div>
 
@@ -126,13 +118,15 @@
 	                <label for="password2" class="col-md-4 col-form-label text-md-right">Confirmar contraseña</label>
 
 	                <div class="col-md-6">
-	                    <input id="password2" type="password" class="form-control" name="password2" required autocomplete="current-password">
+	                    <input id="contra2" type="password" class="form-control" name="password2" required autocomplete="current-password">
 	                </div>
 	            </div>
-
+	            <center>
+	            	<label id="mensaje_error" class="control-label col-md-12 text-success" style="display: block;">Las constraseñas si coinciden</label>
+	            </center>
 	            <div class="form-group">
 	                <div class="center">
-	                    <button type="submit" class="btn btn-primary">
+	                    <button id="aceptar-pass" type="submit" class="btn btn-primary">
 	                        Registrar
 	                    </button>
 	                </div>
@@ -147,37 +141,29 @@
     </div>
   </div>
 
-  <script type="text/javascript">
-  	var p1 = document.getElementById("password").value;
-	var p2 = document.getElementById("password2").value;
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ <script type="text/javascript">
+ 	$(document).ready(function () {
+    	$('#mensaje_error').hide();  
+	});
 
-  	function validarPassword() {
-  		
-  	}
-
-  	function detectarEspacios() {
-  		var espacios = false;
-		var cont = 0;
-		 
-		while (!espacios && (cont < p1.length)) {
-		  if (p1.charAt(cont) == " ")
-		    espacios = true;
-		  cont++;
+	var cambioDePass = function() {
+			var cont = $('#contra').val();
+		    var cont2 = $('#contra2').val();
+		    if (cont == cont2) {
+		        $('#mensaje_error').hide();
+		        $('#mensaje_error').attr("class", "control-label col-md-12 text-success");
+		        $('#mensaje_error').show();
+		        $('#mensaje_error').html("Las constraseñas si coinciden");
+		        
+		    } else {
+		        $('#mensaje_error').html("Las constraseñas no coinciden");
+		        $('#mensaje_error').show();
+		        
+		    }
 		}
-		 
-		if (espacios) {
-		  document.getElementById('sin-espacio').style.display = 'block';
-		  return false;
-		}
-  	}
 
-  	function validarCoincidencias() {
-  		if (p1 != p2) {
-		  document.getElementById('deben-coincidir').style.display = 'block';
-		  return false;
-		} else {
-		  return true; 
-		}
-  	}
-
-  </script>
+	$("#contra").on('keyup', cambioDePass);
+	$("#contra2").on('keyup', cambioDePass);
+ </script>
