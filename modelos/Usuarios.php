@@ -34,13 +34,6 @@ class Usuarios
 	  return $clean;
 	}
 
-	public function create($nombres,$apellidos,$telefono,$direccion,$correo_electronico){
-		$sql = "INSERT INTO `clientes` (nombres, apellidos, telefono, direccion, correo_electronico) VALUES ('$nombres', '$apellidos', '$telefono', '$direccion', '$correo_electronico')";
-		$res = mysqli_query($this->con, $sql);
-		$resultado = ($res) ? true : false;
-		return $resultado;
-	}
-
 	public function read(){
 		$sql = "SELECT * FROM clientes";
 		$res = mysqli_query($this->con, $sql);
