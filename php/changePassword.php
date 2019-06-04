@@ -6,10 +6,11 @@
 	$password = mysqli_real_escape_string($conn,$_POST['password']);
 	$newPassword = $_POST['new_password'];
 	$passHash = password_hash($newPassword, PASSWORD_DEFAULT);
+	$updated_at = date("Y-m-d H:i:s");
 
 	if (password_verify($password, $_SESSION['password'])) 
 	{
-		$sql = "UPDATE usuarios SET password = '$passHash' WHERE nom_usuario = '".$_SESSION['nom_usuario']."'";
+		$sql = "UPDATE usuarios SET password = '$passHash', updated_at = '$updated_at' WHERE nom_usuario = '".$_SESSION['nom_usuario']."'";
 
 		if ($conn->query($sql) === TRUE) {
 			$_SESSION['aviso'] = "success";

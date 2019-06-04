@@ -5,10 +5,11 @@
 	
 	$password = mysqli_real_escape_string($conn,$_POST['password']);
 	$email = $_POST['email'];
+	$updated_at = date("Y-m-d H:i:s");
 
 	if (password_verify($password, $_SESSION['password'])) 
 	{
-		$sql = "UPDATE usuarios SET correo = '$email' WHERE nom_usuario = '".$_SESSION['nom_usuario']."'";
+		$sql = "UPDATE usuarios SET correo = '$email', updated_at = '$updated_at' WHERE nom_usuario = '".$_SESSION['nom_usuario']."'";
 
 		if ($conn->query($sql) === TRUE) {
 			$_SESSION['aviso'] = "success";
