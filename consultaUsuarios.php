@@ -17,6 +17,11 @@
 	<?php
 		include 'header.php';
 		include 'navbar.php';
+
+		include 'modelos/Usuarios.php';
+
+		$usuarios = new Usuarios();
+		$listado = $usuarios->read();
 	?>
 
 	<div class="container">
@@ -51,25 +56,23 @@
 			</thead>
 			<tbody>
 				<?php
-						include 'config/db/conexion.php';
-
-						$query = $conn -> query ("SELECT usuarios.nom_usuario, usuarios.correo, usuarios.created_at, roles.nom_rol FROM usuarios JOIN roles ON usuarios.idroles = roles.idroles");
-
-				        while ($valores = mysqli_fetch_array($query)) {
-									         
-					          echo "<tr>
-					          	<td><button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-eye-open'></span></button></td>
-					          	<td><button type='button' class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span></button></td>
-					          	<td><button type='button' class='btn btn-danger'><span class='glyphicon glyphicon-trash'></span></button></td>
-					          	<td>".$valores['nom_rol']."</td>
-					          	<td>".$valores['nom_usuario']."</td>
-					          	<td>".$valores['correo']."</td>
-					          	<td>".$valores['created_at']."</td>
-					          </tr>";
-				        }
-
-				        $conn->close();
-					?>
+					while($row = mysqli_fetch_object($listado)) {
+						$idroles = $row->idroles;
+						$nombre = $row->nom_usuario;
+						$correo = $row->correo;
+						$fecha_alta = $row->created_at;
+						$rol = $row->nom_rol;
+				?>
+				<tr>
+					<td><a href="" class='btn btn-primary'><span class='glyphicon glyphicon-eye-open'></span></a></td>
+		          	<td><a href="" class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span></a></td>
+		          	<td><a href="" class='btn btn-danger'><span class='glyphicon glyphicon-trash'></span></a></td>
+		          	<td><?php echo $rol; ?></td>
+		          	<td><?php echo $nombre; ?></td>
+		          	<td><?php echo $correo; ?></td>
+		          	<td><?php echo $fecha_alta; ?></td>
+				</tr>
+				<?php } ?>
 			</tbody>
 		</table>
 	</div>

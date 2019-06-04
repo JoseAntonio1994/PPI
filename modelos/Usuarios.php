@@ -35,7 +35,7 @@ class Usuarios
 	}
 
 	public function read(){
-		$sql = "SELECT * FROM clientes";
+		$sql = "SELECT  usuarios.idroles, usuarios.nom_usuario, usuarios.correo, usuarios.created_at, roles.nom_rol FROM usuarios JOIN roles ON usuarios.idroles = roles.idroles";
 		$res = mysqli_query($this->con, $sql);
 		return $res;
 	}
