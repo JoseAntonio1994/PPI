@@ -35,15 +35,15 @@ class Usuarios
 	}
 
 	public function read(){
-		$sql = "SELECT  usuarios.idroles, usuarios.nom_usuario, usuarios.correo, usuarios.created_at, roles.nom_rol FROM usuarios JOIN roles ON usuarios.idroles = roles.idroles";
+		$sql = "SELECT  usuarios.idusuarios, usuarios.nom_usuario, usuarios.correo, usuarios.created_at, roles.nom_rol FROM usuarios JOIN roles ON usuarios.idroles = roles.idroles";
 		$res = mysqli_query($this->con, $sql);
 		return $res;
 	}
 
 	public function search($id){
-		$sql = "SELECT * FROM clientes where id='$id'";
+		$sql = "SELECT  usuarios.idusuarios, usuarios.nom_usuario, usuarios.correo, usuarios.created_at, roles.nom_rol FROM usuarios JOIN roles ON usuarios.idroles = roles.idroles WHERE usuarios.idusuarios='$id'";
 		$res = mysqli_query($this->con, $sql);
-		$return = mysqli_fetch_object($res );
+		$return = mysqli_fetch_object($res);
 		return $return ;
 	}
 

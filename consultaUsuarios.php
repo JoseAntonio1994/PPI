@@ -57,16 +57,16 @@
 			<tbody>
 				<?php
 					while($row = mysqli_fetch_object($listado)) {
-						$idroles = $row->idroles;
+						$idusuarios = $row->idusuarios;
 						$nombre = $row->nom_usuario;
 						$correo = $row->correo;
 						$fecha_alta = $row->created_at;
 						$rol = $row->nom_rol;
 				?>
 				<tr>
-					<td><a href="" class='btn btn-primary'><span class='glyphicon glyphicon-eye-open'></span></a></td>
-		          	<td><a href="" class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span></a></td>
-		          	<td><a href="" class='btn btn-danger'><span class='glyphicon glyphicon-trash'></span></a></td>
+					<td><a href="verPerfil.php?id=<?php echo $idusuarios; ?>" class='btn btn-primary'><span class='glyphicon glyphicon-eye-open' data-toggle='tooltip'></span></a></td>
+		          	<td><a href="modificarPerfil.php?id=<?php echo $idusuarios; ?>" class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span></a></td>
+		          	<td><a href="borrarPerfil.php?id=<?php echo $idusuarios; ?>" class='btn btn-danger'><span class='glyphicon glyphicon-trash'></span></a></td>
 		          	<td><?php echo $rol; ?></td>
 		          	<td><?php echo $nombre; ?></td>
 		          	<td><?php echo $correo; ?></td>
