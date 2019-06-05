@@ -55,7 +55,7 @@ class Usuarios
 	}
 
 	public function delete($id){
-		$sql = "DELETE FROM clientes WHERE id=$id";
+		$sql = "DELETE FROM usuarios WHERE idusuarios=$id";
 		$res = mysqli_query($this->con, $sql);
 		$resultado = ($res) ? true : false;
 		return $resultado;

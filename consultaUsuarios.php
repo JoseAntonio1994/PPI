@@ -64,7 +64,7 @@
 						$rol = $row->nom_rol;
 				?>
 				<tr>
-					<td><a href="verPerfil.php?id=<?php echo $idusuarios; ?>" class='btn btn-primary'><span class='glyphicon glyphicon-eye-open' data-toggle='tooltip'></span></a></td>
+					<td><a href="verUsuario.php?id=<?php echo $idusuarios; ?>" class='btn btn-primary'><span class='glyphicon glyphicon-eye-open' data-toggle='tooltip'></span></a></td>
 		          	<td><a href="modificarPerfil.php?id=<?php echo $idusuarios; ?>" class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span></a></td>
 		          	<td><a href="borrarPerfil.php?id=<?php echo $idusuarios; ?>" class='btn btn-danger'><span class='glyphicon glyphicon-trash'></span></a></td>
 		          	<td><?php echo $rol; ?></td>
