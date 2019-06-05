@@ -66,7 +66,7 @@
 				<tr>
 					<td><a href="verUsuario.php?id=<?php echo $idusuarios; ?>" class='btn btn-primary'><span class='glyphicon glyphicon-eye-open' data-toggle='tooltip'></span></a></td>
 		          	<td><a href="modificarPerfil.php?id=<?php echo $idusuarios; ?>" class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span></a></td>
-		          	<td><a href="borrarPerfil.php?id=<?php echo $idusuarios; ?>" class='btn btn-danger'><span class='glyphicon glyphicon-trash'></span></a></td>
+		          	<td><a href='' class='btn btn-danger'><span class='glyphicon glyphicon-trash'></span></a></td>
 		          	<td><?php echo $rol; ?></td>
 		          	<td><?php echo $nombre; ?></td>
 		          	<td><?php echo $correo; ?></td>
@@ -81,5 +81,7 @@
 		include "footer.php";
 	?>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </body>
 </html>
