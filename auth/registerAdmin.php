@@ -111,6 +111,7 @@
  		<label class="col-sm-2">Entidad federativa:</label>
         <div class="col-md-4">
             <select id="estado" class="form-control" name="estado">
+                <option value="">Seleccione tu estado:</option>
                 <?php
                     while ($row = mysqli_fetch_object($estados)) 
                     {
