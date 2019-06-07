@@ -16,6 +16,11 @@
  <?php
  	include 'header.php';
 	include '../navbar.php';
+
+    include '../modelos/Escolaridad.php';
+
+    $escolaridades = new Escolaridad();
+    $listado = $escolaridades->read();
  ?>
 
  <center>
@@ -33,7 +38,16 @@
         </div>
         <label class="col-sm-2">Escolaridad:</label>
         <div class="col-md-4">
-            <input id="nombre" type="text" class="form-control" name="nombre" required autocomplete="nombre" autofocus>
+            <select class="form-control" name="escolaridad">
+                <?php
+                    while ($row = mysqli_fetch_object($listado)) 
+                    {
+                        echo '<option value='.$row->idescolaridad.'>'.$row->nom_escolaridad.'</option>';
+                    }
+
+                    $escolaridades->close();
+                ?>
+            </select>
         </div>
  	</div>
  	<div class="form-group row">
@@ -53,11 +67,19 @@
         </div>
         <label class="col-sm-1">Estado civil:</label>
         <div class="col-md-2">
-            <input id="nombre" type="text" class="form-control" name="nombre" required autocomplete="nombre" autofocus>
+            <select class="form-control" name="civil">
+                <option value="SOLTERO">SOLTERO(A)</option>
+                <option value="CASADO">CASADO(A)</option>
+                <option value="VIUDO">VIUDO(A)</option>
+                <option value="DIVORCIADO">DIVORCIADO(A)</option>
+            </select>
         </div>
         <label class="col-sm-1">Sexo:</label>
         <div class="col-md-2">
-            <input id="nombre" type="text" class="form-control" name="nombre" required autocomplete="nombre" autofocus>
+            <select class="form-control" name="sexo">
+                <option value="H">HOMBRE</option>
+                <option value="M">MUJER</option>
+            </select>
         </div>
  	</div>
  	<div class="form-group row">
