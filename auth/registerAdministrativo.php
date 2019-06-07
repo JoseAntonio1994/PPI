@@ -115,7 +115,7 @@
         </div>
     </div>
  	<div class="form-group row">
- 		<button type="submit" name="regresar" class="btn btn-primary col-sm-1">Regresar</button>
+ 		<button type="submit" name="regresar" class="btn btn-danger col-sm-1">Regresar</button>
  		<button type="submit" name="siguiente" class="btn btn-primary col-sm-1" style="margin-left: 10px;">Registrar</button>
  	</div>
  	</form>
