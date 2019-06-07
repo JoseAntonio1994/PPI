@@ -146,18 +146,7 @@
  	</form>
  </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
- <script>
-    $(document).ready(function(){
-        $('#estado').change(function(){
-
-            var estado_seleccionado = $(this).val();
-
-            $.post('../php/selectEstado.php', {estado : estado_seleccionado}).done(function (respuesta) {
-                $('#ciudad').html(respuesta);
-            });
-        });
-    });
-</script>
+<script src="../recursos/js/scripts.js"></script>
 
 </body>
 </html>
