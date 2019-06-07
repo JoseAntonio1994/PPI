@@ -19,11 +19,9 @@
 
     include '../modelos/Escolaridad.php';
     include '../modelos/Estados.php';
-    include '../modelos/Ciudad.php';
 
     $escolaridad = new Escolaridad();
     $estado = new Estados();
-    $ciudad = new Ciudad();
     $listado = $escolaridad->read();
     $estados = $estado->read();
  ?>
@@ -115,7 +113,7 @@
                 <?php
                     while ($row = mysqli_fetch_object($estados)) 
                     {
-                        echo '<option value='.$row->idestado.'>'.$row->nom_estado.'</option>';
+                        echo '<option value="'.$row->idestado.'">'.$row->nom_estado.'</option>';
                     }
 
                     $estado->close();
