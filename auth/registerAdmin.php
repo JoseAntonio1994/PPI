@@ -18,9 +18,14 @@
 	include '../navbar.php';
 
     include '../modelos/Escolaridad.php';
+    include '../modelos/Estados.php';
+    include '../modelos/Ciudad.php';
 
-    $escolaridades = new Escolaridad();
-    $listado = $escolaridades->read();
+    $escolaridad = new Escolaridad();
+    $estado = new Estados();
+    $ciudad = new Ciudad();
+    $listado = $escolaridad->read();
+    $estados = $estado->read();
  ?>
 
  <center>
@@ -45,7 +50,7 @@
                         echo '<option value='.$row->idescolaridad.'>'.$row->nom_escolaridad.'</option>';
                     }
 
-                    $escolaridades->close();
+                    $escolaridad->close();
                 ?>
             </select>
         </div>
@@ -105,7 +110,16 @@
  	<div class="form-group row">
  		<label class="col-sm-2">Entidad federativa:</label>
         <div class="col-md-4">
-            <input id="estado" type="text" class="form-control" name="estado" required autocomplete="estado" autofocus>
+            <select id="estado" class="form-control" name="estado">
+                <?php
+                    while ($row = mysqli_fetch_object($estados)) 
+                    {
+                        echo '<option value='.$row->idestado.'>'.$row->nom_estado.'</option>';
+                    }
+
+                    $estado->close();
+                ?>
+            </select>
         </div>
         <label class="col-sm-2">Código postal:</label>
         <div class="col-md-4">
@@ -115,7 +129,9 @@
     <div class="form-group row">
         <label class="col-sm-2">Ciudad:</label>
         <div class="col-md-4">
-            <input id="estado" type="text" class="form-control" name="estado" required autocomplete="estado" autofocus>
+            <select id="ciudad" class="form-control" name="ciudad">
+                
+            </select>
         </div>
         <label class="col-sm-2">Teléfono:</label>
         <div class="col-md-4">
@@ -128,5 +144,19 @@
  	</div>
  	</form>
  </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+ <script>
+    $(document).ready(function(){
+        $('#estado').change(function(){
+
+            var estado_seleccionado = $(this).val();
+
+            $.post('../php/selectEstado.php', {estado : estado_seleccionado}).done(function (respuesta) {
+                $('#ciudad').html(respuesta);
+            });
+        });
+    });
+</script>
+
 </body>
 </html>

@@ -2,7 +2,7 @@
 
 require_once 'Conexion.php';
 
-class Escolaridad extends Conexion
+class Estados extends Conexion
 {
 	function __construct()
 	{
@@ -18,7 +18,7 @@ class Escolaridad extends Conexion
 	}
 
 	public function read(){
-		$sql = "SELECT  * FROM escolaridad";
+		$sql = "SELECT * FROM estado";
 		$res = mysqli_query($this->con, $sql);
 		return $res;
 	}
