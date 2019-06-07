@@ -62,7 +62,7 @@
  		<label class="radio-inline col-sm-2"><input type="radio" name="optradio">Empresa</label>
  	</div>
  	<div class="form-group row">
- 		<button type="submit" name="regresar" class="btn btn-primary col-sm-1">Regresar</button>
+ 		<button type="submit" name="regresar" class="btn btn-danger col-sm-1">Regresar</button>
  		<button type="submit" name="siguiente" class="btn btn-primary col-sm-1" style="margin-left: 10px;">Siguiente</button>
  	</div>
  	</form>
