@@ -23,6 +23,7 @@
                 }
                 else {
                     echo "<a href='javascript:void(0)' onclick='cargarInicioSesion()'>Iniciar Sesión</a>";
+                    echo "<a href='auth/registerUser.php'>Registro</a>";
                 }
             ?>
             

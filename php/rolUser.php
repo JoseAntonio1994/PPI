@@ -1,38 +1,41 @@
 <?php
-	$email = $_POST['email'];
-	$password = $_POST['password'];
-	$password2 = $_POST['password2'];
-	$rol = $_POST['rol'];
+	session_start();
+
+	$_SESSION['email'] = $_POST['email'];
+	$_SESSION['password'] = $_POST['password'];
+	$_SESSION['password2'] = $_POST['password2'];
+	$_SESSION['rol'] = $_POST['rol'];
 
 	if (isset($_POST['siguiente'])) 
 	{
-		if ($rol == 'administrador') 
+		if ($_SESSION['rol'] == 'administrador') 
 		{
 			header("Location: ../auth/registerAdmin.php");
 		}
-		if ($rol == 'alumno') 
+		if ($_SESSION['rol'] == 'alumno') 
 		{
 			header("Location: ../auth/registerAlumno.php");
 		}
-		if ($rol == 'docente') 
+		if ($_SESSION['rol'] == 'docente') 
 		{
 			header("Location: ../auth/registerDocente.php");
 		}
-		if ($rol == 'jefe') 
+		if ($_SESSION['rol'] == 'jefe') 
 		{
 			header("Location: ../auth/registerJefe.php");
 		}
-		if ($rol == 'administrativo') 
+		if ($_SESSION['rol'] == 'administrativo') 
 		{
 			header("Location: ../auth/registerAdministrativo.php");
 		}
-		if ($rol == 'empresa') 
+		if ($_SESSION['rol'] == 'empresa') 
 		{
 			header("Location: ../auth/registerEmpresa.php");
 		}
 	}
 	if (isset($_POST['regresar'])) 
 	{
+		session_destroy();
 		header("Location: ../index.php");
 	}
 

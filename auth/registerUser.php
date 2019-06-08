@@ -51,15 +51,15 @@
  		<label class="col-sm-4">Seleccione el rol:</label>
  	</div>
  	<div class="form-group row">
- 		<label class="radio-inline col-sm-2"><input type="radio" name="rol" value="administrador">Administrador</label>
- 		<label class="radio-inline col-sm-2"><input type="radio" name="rol" value="alumno">Alumno</label>
- 		<label class="radio-inline col-sm-2"><input type="radio" name="rol" value="docente">Docente</label>
- 		<label class="radio-inline col-sm-2"><input type="radio" name="rol" value="jefe">Jefe de Departamento</label>
- 		<label class="radio-inline col-sm-2"><input type="radio" name="rol" value="administrativo">Administrativo</label>
+ 		<label class="radio-inline col-sm-2"><input type="radio" name="rol" value="1">Administrador</label>
+ 		<label class="radio-inline col-sm-2"><input type="radio" name="rol" value="2">Alumno</label>
+ 		<label class="radio-inline col-sm-2"><input type="radio" name="rol" value="3">Docente</label>
+ 		<label class="radio-inline col-sm-2"><input type="radio" name="rol" value="4">Jefe de Departamento</label>
+ 		<label class="radio-inline col-sm-2"><input type="radio" name="rol" value="5">Administrativo</label>
  		
  	</div>
  	<div class="form-group row">
- 		<label class="radio-inline col-sm-2"><input type="radio" name="rol" value="empresa">Empresa</label>
+ 		<label class="radio-inline col-sm-2"><input type="radio" name="rol" value="6">Empresa</label>
  	</div>
  	<div class="form-group row">
  		<input type="submit" value="Regresar" name="regresar" class="btn btn-danger col-sm-1">

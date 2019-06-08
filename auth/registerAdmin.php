@@ -30,14 +30,14 @@
  	<h3>Registro de Usuarios</h3>
  </center>
  <div class="container">
- 	<form method="POST" action="">
+ 	<form method="POST" action="../php/registerUser.php">
  		<div class="form-group row">
  		<label class="col-sm-4">Ingrese sus datos como administrador</label>
  	</div>
  	<div class="form-group row">
  		<label class="col-sm-2">Nombre(s):</label>
  		<div class="col-md-4">
-            <input id="nombre" type="text" class="form-control" name="nombre" required autocomplete="nombre" autofocus>
+            <input id="nombre" type="text" class="form-control" name="nombre" autocomplete="nombre" autofocus>
         </div>
         <label class="col-sm-2">Escolaridad:</label>
         <div class="col-md-4">
@@ -56,17 +56,17 @@
  	<div class="form-group row">
  		<label class="col-sm-2">Primer apellido:</label>
  		<div class="col-md-4">
-            <input id="primer" type="text" class="form-control" name="primer" required autocomplete="primer" autofocus>
+            <input id="primer" type="text" class="form-control" name="primer" autocomplete="primer" autofocus>
         </div>
         <label class="col-sm-2">RFC:</label>
         <div class="col-md-4">
-            <input id="nombre" type="text" class="form-control" name="nombre" required autocomplete="nombre" autofocus>
+            <input id="nombre" type="text" class="form-control" name="nombre" autocomplete="nombre" autofocus>
         </div>
  	</div>
  	<div class="form-group row">
  		<label class="col-sm-2">Segundo apellido:</label>
  		<div class="col-md-4">
-            <input id="segundo" type="text" class="form-control" name="segundo" required autocomplete="password2" autofocus>
+            <input id="segundo" type="text" class="form-control" name="segundo" autocomplete="password2" autofocus>
         </div>
         <label class="col-sm-1">Estado civil:</label>
         <div class="col-md-2">
@@ -88,21 +88,21 @@
  	<div class="form-group row">
  		<label class="col-sm-2">CURP:</label>
         <div class="col-md-4">
-            <input id="curp" type="text" class="form-control" name="curp" required autocomplete="curp" autofocus>
+            <input id="curp" type="text" class="form-control" name="curp" autocomplete="curp" autofocus>
         </div>
         <label class="col-sm-2">Domicilio:</label>
         <div class="col-md-4">
-            <input id="nombre" type="text" class="form-control" name="nombre" required autocomplete="nombre" autofocus>
+            <input id="nombre" type="text" class="form-control" name="nombre" autocomplete="nombre" autofocus>
         </div>
  	</div>
  	<div class="form-group row">
  		<label class="col-sm-2">Fecha de nacimiento:</label>
         <div class="col-md-4">
-            <input id="fecha" type="date" class="form-control" name="fecha" required autocomplete="fecha" autofocus>
+            <input id="fecha" type="date" class="form-control" name="fecha" autocomplete="fecha" autofocus>
         </div>
         <label class="col-sm-2">Colonia:</label>
         <div class="col-md-4">
-            <input id="nombre" type="text" class="form-control" name="nombre" required autocomplete="nombre" autofocus>
+            <input id="nombre" type="text" class="form-control" name="nombre" autocomplete="nombre" autofocus>
         </div>
  	</div>
  	<div class="form-group row">
@@ -122,7 +122,7 @@
         </div>
         <label class="col-sm-2">Código postal:</label>
         <div class="col-md-4">
-            <input id="nombre" type="text" class="form-control" name="nombre" required autocomplete="nombre" autofocus>
+            <input id="nombre" type="text" class="form-control" name="nombre" autocomplete="nombre" autofocus>
         </div>
  	</div>
     <div class="form-group row">
@@ -134,12 +134,12 @@
         </div>
         <label class="col-sm-2">Teléfono:</label>
         <div class="col-md-4">
-            <input id="nombre" type="text" class="form-control" name="nombre" required autocomplete="nombre" autofocus>
+            <input id="nombre" type="text" class="form-control" name="nombre" autocomplete="nombre" autofocus>
         </div>
     </div>
  	<div class="form-group row">
- 		<button type="submit" name="regresar" class="btn btn-danger col-sm-1">Regresar</button>
- 		<button type="submit" name="siguiente" class="btn btn-primary col-sm-1" style="margin-left: 10px;">Registrar</button>
+ 		<input type="submit" value="Regresar" name="regresar" class="btn btn-danger col-sm-1">
+ 		<input type="submit" value="Siguiente" name="siguiente" class="btn btn-primary col-sm-1" style="margin-left: 10px;">
  	</div>
  	</form>
  </div>

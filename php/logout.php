@@ -3,6 +3,6 @@ session_start();
 session_unset();
 session_destroy();
 
-header("Location: http://localhost/PPI/");
+header("Location: ../index.php");
 die();
 ?>
