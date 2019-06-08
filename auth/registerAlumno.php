@@ -19,9 +19,12 @@
 	include '../navbar.php';
 
     include '../modelos/Estados.php';
+    include '../modelos/Carrera.php';
 
     $estado = new Estados();
+    $carrera = new Carrera();
     $estados = $estado->read();
+    $carreras = $carrera->read();
  ?>
 
  <center>
@@ -37,7 +40,17 @@
         </div>
         <label class="col-sm-2">Carrera:</label>
         <div class="col-md-4">
-            <input id="nombre" type="text" class="form-control" name="nombre" required autocomplete="nombre" autofocus>
+            <select id="carreras" class="form-control" name="carreras">
+                <option value="">Seleccione tu carrera:</option>
+                <?php
+                    while ($row = mysqli_fetch_object($carreras)) 
+                    {
+                        echo '<option value="'.$row->idcarrera.'">'.$row->nom_carrera.'</option>';
+                    }
+
+                    $carrera->close();
+                ?>
+            </select>
         </div>
  	</div>
  	<div class="form-group row">
@@ -51,7 +64,21 @@
         </div>
         <label class="col-sm-1">Semestre:</label>
         <div class="col-md-2">
-            <input id="nombre" type="text" class="form-control" name="nombre" required autocomplete="nombre" autofocus>
+            <select class="form-control" name="semestre">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+            </select>
         </div>
  	</div>
  	<div class="form-group row">
