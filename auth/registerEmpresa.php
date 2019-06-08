@@ -16,6 +16,15 @@
  <?php
  	include 'header.php';
 	include '../navbar.php';
+
+    include '../modelos/Estados.php';
+    include '../modelos/Escolaridad.php';
+
+    $estado = new Estados();
+    $escolaridad = new Escolaridad();
+    $estados = $estado->read();
+    $estadoEmpresa = $estado->read();
+    $escolaridades = $escolaridad->read();
  ?>
 
  <center>
@@ -51,7 +60,17 @@
         </div>
         <label class="col-sm-2">Escolaridad:</label>
         <div class="col-md-4">
-            <input id="nombre" type="text" class="form-control" name="nombre" required autocomplete="nombre" autofocus>
+            <select class="form-control" name="escolaridad">
+                <option value="">Seleccione su escolaridad:</option>
+                <?php
+                    while ($row = mysqli_fetch_object($escolaridades)) 
+                    {
+                        echo '<option value='.$row->idescolaridad.'>'.$row->nom_escolaridad.'</option>';
+                    }
+
+                    $escolaridad->close();
+                ?>
+            </select>
         </div>
  	</div>
  	<div class="form-group row">
@@ -71,11 +90,19 @@
         </div>
         <label class="col-sm-1">Estado civil:</label>
         <div class="col-md-2">
-            <input id="nombre" type="text" class="form-control" name="nombre" required autocomplete="nombre" autofocus>
+            <select class="form-control" name="civil">
+                <option value="SOLTERO">SOLTERO(A)</option>
+                <option value="CASADO">CASADO(A)</option>
+                <option value="VIUDO">VIUDO(A)</option>
+                <option value="DIVORCIADO">DIVORCIADO(A)</option>
+            </select>
         </div>
         <label class="col-sm-1">Sexo:</label>
         <div class="col-md-2">
-            <input id="nombre" type="text" class="form-control" name="nombre" required autocomplete="nombre" autofocus>
+            <select class="form-control" name="sexo">
+                <option value="H">HOMBRE</option>
+                <option value="M">MUJER</option>
+            </select>
         </div>
  	</div>
  	<div class="form-group row">
@@ -91,7 +118,17 @@
     <div class="form-group row">
         <label class="col-sm-2">Entidad federativa:</label>
         <div class="col-md-4">
-            <input id="estado" type="text" class="form-control" name="estado" required autocomplete="estado" autofocus>
+            <select id="estadoEmpresa" class="form-control" name="estado">
+                <option value="">Seleccione tu estado:</option>
+                <?php
+                    while ($row = mysqli_fetch_object($estadoEmpresa)) 
+                    {
+                        echo '<option value='.$row->idestado.'>'.$row->nom_estado.'</option>';
+                    }
+
+                    $estado->close();
+                ?>
+            </select>
         </div>
         <label class="col-sm-2">Colonia:</label>
         <div class="col-md-4">
@@ -101,7 +138,9 @@
     <div class="form-group row">
         <label class="col-sm-2">Ciudad:</label>
         <div class="col-md-4">
-            <input id="estado" type="text" class="form-control" name="estado" required autocomplete="estado" autofocus>
+            <select id="ciudadEmpresa" class="form-control" name="ciudad">
+                
+            </select>
         </div>
         <label class="col-sm-2">Código postal:</label>
         <div class="col-md-4">
@@ -141,11 +180,23 @@
     <div class="form-group row">
         <label class="col-sm-2">Entidad federativa de la empresa:</label>
         <div class="col-md-4">
-            <input id="estado" type="text" class="form-control" name="estado" required autocomplete="estado" autofocus>
+            <select id="estadoEmpresa2" class="form-control" name="estado">
+                <option value="">Seleccione tu estado:</option>
+                <?php
+                    while ($row = mysqli_fetch_object($estados)) 
+                    {
+                        echo '<option value="'.$row->idestado.'">'.$row->nom_estado.'</option>';
+                    }
+
+                    $estado->close();
+                ?>
+            </select>
         </div>
         <label class="col-sm-2">Ciudad de la empresa:</label>
         <div class="col-md-4">
-            <input id="estado" type="text" class="form-control" name="estado" required autocomplete="estado" autofocus>
+            <select id="ciudadEmpresa2" class="form-control" name="ciudad">
+                
+            </select>
         </div>
     </div>
  	<div class="form-group row">
@@ -154,5 +205,9 @@
  	</div>
  	</form>
  </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="../recursos/js/scriptEmpresa.js"></script>
+<script src="../recursos/js/scriptEmpresa2.js"></script>
 </body>
 </html>
