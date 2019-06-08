@@ -12,9 +12,6 @@
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="../recursos/css/index.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="../recursos/js/scripts.js"></script>
-
 </head>
 <body>
  <?php
@@ -112,12 +109,12 @@
     <div class="form-group row">
         <label class="col-sm-2">Entidad federativa:</label>
         <div class="col-md-4">
-             <select id="estado" class="form-control" name="estado">
+             <select id="estadoAlumno" class="form-control" name="estado">
                 <option value="">Seleccione tu estado:</option>
                 <?php
                     while ($row = mysqli_fetch_object($estados)) 
                     {
-                        echo '<option value='.$row->idestado.'>'.$row->nom_estado.'</option>';
+                        echo '<option value="'.$row->idestado.'">'.$row->nom_estado.'</option>';
                     }
 
                     $estado->close();
@@ -132,7 +129,7 @@
     <div class="form-group row">
         <label class="col-sm-2">Ciudad:</label>
         <div class="col-md-4">
-            <select id="ciudad" class="form-control" name="ciudad">
+            <select id="ciudadAlumno" class="form-control" name="ciudad">
                 
             </select>
         </div>
@@ -143,6 +140,9 @@
  	</div>
  	</form>
  </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="../recursos/js/scriptAlumno.js"></script>
 
 </body>
 </html>
