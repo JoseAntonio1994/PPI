@@ -1,3 +1,4 @@
+<!-- Archivo que contiene la estructura principal de la plataforma y el contenido irá cambiando dinamicamente según se seleccione las opciones en la barra de menú.  -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
