@@ -1,3 +1,4 @@
+<!-- Archivo con las opciones de registrar usuarios y consulta de usuarios. Solo los administradores pueden ver estas opciones.  -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
