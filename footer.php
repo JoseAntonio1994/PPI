@@ -1,14 +1,15 @@
 <style>
   #footer {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     right: 0;
     left: 0;
     margin: 0 auto;
+    max-height: .1rem;
   }
 </style>
 
-<footer class="content container" id="footer">
+<footer class="content container-fluid" id="footer">
   <h3>------------------------------------------------------------------------------------------------------</h3>
   <h5>Plataforma de Procesos Institucionales | www.ppi.edu.mx</h5>
   <h5>Instituto Tecnológico de Veracruz - Algunos derechos reservados &copy; 2017</h5>
