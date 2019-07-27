@@ -22,7 +22,7 @@
  	<h3>Registro de Usuarios</h3>
  </center>
  <div class="container">
- 	<form method="POST" action="../php/rolUser.php">
+ 	<form id="registerUser" name="registerUser">
  		<div class="form-group row">
  		<label class="col-sm-4">Ingrese un correo electrónico y una contraseña</label>
  	</div>
@@ -48,24 +48,19 @@
         </div>
  	</div><br>
  	<div class="form-group row">
- 		<label class="col-sm-4">Seleccione el rol:</label>
+        <label class="col-sm-2">Selecciona el rol</label>
+ 		<div class="col-sm-4">
+            <select class="form-control" id="roles"></select>
+        </div>
  	</div>
  	<div class="form-group row">
- 		<label class="radio-inline col-sm-2"><input type="radio" name="rol" value="1">Administrador</label>
- 		<label class="radio-inline col-sm-2"><input type="radio" name="rol" value="2">Alumno</label>
- 		<label class="radio-inline col-sm-2"><input type="radio" name="rol" value="3">Docente</label>
- 		<label class="radio-inline col-sm-2"><input type="radio" name="rol" value="4">Jefe de Departamento</label>
- 		<label class="radio-inline col-sm-2"><input type="radio" name="rol" value="5">Administrativo</label>
- 		
- 	</div>
- 	<div class="form-group row">
- 		<label class="radio-inline col-sm-2"><input type="radio" name="rol" value="6">Empresa</label>
- 	</div>
- 	<div class="form-group row">
- 		<input type="submit" value="Regresar" name="regresar" class="btn btn-danger col-sm-1">
- 		<input type="submit" value="Siguiente" name="siguiente" class="btn btn-primary col-sm-1" style="margin-left: 10px;">
+ 		<input type="submit" value="Guardar" name="siguiente" class="btn btn-primary col-sm-1">
  	</div>
  	</form>
  </div>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script src="../recursos/js/selectRol.js"></script>
 </body>
 </html>

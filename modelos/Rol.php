@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Conexion';
+require_once 'Conexion.php';
 
 class Rol extends Conexion 
 {
@@ -19,7 +19,7 @@ class Rol extends Conexion
 			$rol["cod_rol"] = utf8_encode($cod_rol);
 			$rol["nom_rol"] = utf8_encode($nom_rol);
 
-			array_push($usuarios, $rol);
+			array_push($roles, $rol);
 
 		}
 
