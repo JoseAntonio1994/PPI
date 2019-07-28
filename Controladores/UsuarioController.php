@@ -12,14 +12,14 @@ class UsuarioController {
 								"cod_rol"=>$cod_rol,
 								"created_at"=>$created_at);
 
-		$respuesta = Datos::createUsuarioModel($datosController, "usuarios");
+		$respuesta = Usuario::createUsuarioModel($datosController, "usuarios");
 
 		return $respuesta;
 	}
 
 	public function readUsuarioController()
 	{
-		$respuesta = Datos::readUsuariosModel("usuarios");
+		$respuesta = Usuario::readUsuariosModel("usuarios");
 		return $respuesta;
 	}
 
@@ -28,7 +28,7 @@ class UsuarioController {
 		$datosController = array("nom_usuario"=>$nom_usuario,
 				"password"=>$password);
 
-		$respuesta = Datos::loginUsuariosModel($datosController, "usuarios");
+		$respuesta = Usuario::loginUsuariosModel($datosController, "usuarios");
 
 		return $respuesta;
 	}
@@ -37,7 +37,7 @@ class UsuarioController {
 	{
 		$datosController = array("cod_usuario"=>$cod_usuario, "correo"=>$correo);
 
-		$respuesta = Datos::updateUsuarioEmailModel($datosController, "usuarios");
+		$respuesta = Usuario::updateUsuarioEmailModel($datosController, "usuarios");
 
 		return $respuesta;
 	}
@@ -46,14 +46,14 @@ class UsuarioController {
 	{
 		$datosController = array("cod_usuario"=>$cod_usuario, "password"=>$password);
 
-		$respuesta = Datos::updateUsuarioPasswordModel($datosController, "usuarios");
+		$respuesta = Usuario::updateUsuarioPasswordModel($datosController, "usuarios");
 
 		return $respuesta;
 	}
 
 	public function deleteCategoriaController($cod_usuario)
 	{
-		$respuesta = Datos::deleteUsuarioModel($cod_usuario, "usuarios");
+		$respuesta = Usuario::deleteUsuarioModel($cod_usuario, "usuarios");
 		return $respuesta;
 	}
 

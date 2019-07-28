@@ -103,3 +103,10 @@ h3, h5 {
     margin-top: 20px;
 }
 
+.alert-success{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 1%;
+    display: none;
+}
+

@@ -12,9 +12,9 @@ class Usuario extends Conexion
 
 		$stmt->bindParam(":nom_usuario", $datosModel["nom_usuario"], PDO::PARAM_STR);
 		$stmt->bindParam(":correo", $datosModel["correo"], PDO::PARAM_STR);
-		$stmt->bindParam(":password", $datosModel[":password"], PDO::PARAM_STR);
+		$stmt->bindParam(":password", $datosModel["password"], PDO::PARAM_STR);
 		$stmt->bindParam(":cod_rol", $datosModel["cod_rol"], PDO::PARAM_INT);
-		$stmt->bindParam(":created_at", $datosModel[":created_at"], PDO::PARAM_STR);
+		$stmt->bindParam(":created_at", $datosModel["created_at"], PDO::PARAM_STR);
 
 		return $respuesta = ($stmt->execute()) ? true : false ;
 	}

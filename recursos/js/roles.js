@@ -2,10 +2,10 @@ $(document).ready(function () {
     cargarRoles();
 });
 
-//Función para cargar la lista de roles por medio de una petición ajax
+//Función para cargar la lista de roles por medio de una petición ajax a un servicio web
 function cargarRoles() {
 	$.ajax({
-		url: '../ajax/listar_roles.php',
+		url: '../ajax/roles.php?apiroles=leer_roles',
 		type: 'GET',
 		contentType: "application/json;charset=utf-8",
 		dataType: 'json',
@@ -13,11 +13,11 @@ function cargarRoles() {
 			
 			var roles = '';
 
-			$.each(data, function(key, item){
+			$.each(data["contenido"], function(key, item){
 				roles += '<option value = ' + item.cod_rol + '>' + item.nom_rol + '</option>';
 			});
 
-			$('#roles').html(roles);
+			$('#cod_rol').html(roles);
 		},
 		error: function(data) {
 			console.log("Error al mostrar los roles");

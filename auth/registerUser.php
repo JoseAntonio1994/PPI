@@ -18,6 +18,11 @@
 	include '../navbar.php';
  ?>
 
+ <div class="alert alert-success alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong id="success"></strong>
+</div>
+
  <center>
  	<h3>Registro de Usuarios</h3>
  </center>
@@ -26,14 +31,17 @@
  		<div class="form-group row">
  		<label class="col-sm-4">Ingrese un correo electrónico y una contraseña</label>
  	</div>
+    <div class="form-group row">
+        <label class="col-sm-2">Usuario</label>
+        <div class="col-md-4">
+            <input id="nom_usuario" type="text" class="form-control" name="nom_usuario" autocomplete="nom_usuario" autofocus>
+        </div>
+    </div>
  	<div class="form-group row">
  		<label class="col-sm-2">Correo electrónico</label>
  		<div class="col-md-4">
-            <input id="email" type="email" class="form-control" name="email" autocomplete="email" autofocus>
+            <input id="correo" type="email" class="form-control" name="correo" autocomplete="correo" autofocus>
         </div>
-        <div class="checkbox col-sm-4">
-		  <label><input type="checkbox" value="">Acepto todas las condiciones y términos</label>
-		</div>
  	</div>
  	<div class="form-group row">
  		<label class="col-sm-2">Contraseña</label>
@@ -50,17 +58,18 @@
  	<div class="form-group row">
         <label class="col-sm-2">Selecciona el rol</label>
  		<div class="col-sm-4">
-            <select class="form-control" id="roles"></select>
+            <select class="form-control" name="cod_rol" id="cod_rol"></select>
         </div>
  	</div>
  	<div class="form-group row">
- 		<input type="submit" value="Guardar" name="siguiente" class="btn btn-primary col-sm-1">
+ 		<input type="submit" value="Guardar" class="btn btn-primary col-sm-1">
  	</div>
  	</form>
  </div>
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <script src="../recursos/js/selectRol.js"></script>
+ <script src="../recursos/js/roles.js"></script>
+ <script src="../recursos/js/usuarios.js"></script>
 </body>
 </html>
