@@ -36,11 +36,18 @@
 </div>
 
 <div id="sesion" style="display: none;">
-  <?php include 'auth/login.php';  ?>
+  <?php include '/auth/login.php';  ?>
 </div>
 
 <script type="text/javascript">
   var menuAnterior = document.getElementById('principal');
+
+  function cargarAlumno() {
+    var menuActual = document.getElementById('principal');
+    menuAnterior.style.display = 'none';
+    menuActual.style.display = 'block';
+    menuAnterior = menuActual;
+  }
 
   function cargarTutorias() {
     var menuActual = document.getElementById('queson');

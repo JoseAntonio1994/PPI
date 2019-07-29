@@ -5,6 +5,7 @@
       <p>Crear grupos de tutorías</p>
     </div>
     <div class="col-sm-6 col-md-4 text-center">
+      <!--a href="tutoriasAdministrativo/consulta_grupos.php"><img src="recursos/img/tutorias/unirse.png" class="img-circle" alt="Cinque Terre"></a-->
       <a href="javascript:void(0)" onclick="consultaGrupos()"><img src="recursos/img/tutorias/unirse.png" class="img-circle" alt="Cinque Terre"></a>
       <p>Consulta de Grupos</p>
     </div>

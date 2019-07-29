@@ -6,7 +6,7 @@
 	<p>Créditos complementarios</p>
   </div>
   <div class="col-sm-1 col-md-1">
-  	<a href=""><img src="recursos/img/tutorias.png" class="img-circle" alt="Cinque Terre"></a>
+  	<a href="tutorias.php"><img src="recursos/img/tutorias.png" class="img-circle" alt="Cinque Terre"></a>
 	<p>Tutorias</p>
   </div>
   <div class="col-sm-1 col-md-1">
