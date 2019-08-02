@@ -9,7 +9,7 @@ $('#registerUser').submit(function(event){
 
 	$.ajax({
 		type: "POST",
-		url: "../ajax/usuarios.php?apiusuarios=crear_usuario",
+		url: 'http://localhost/PPI/ajax/usuarios.php?apiusuarios=crear_usuario',
 		data: parametros,
 		dataType: 'json',
 		success: function(data){
@@ -18,8 +18,30 @@ $('#registerUser').submit(function(event){
 			limpiar();
 		},
 		error: function(){
-			console.log("Falló la respuesta");
+			$('#alert-danger').show();
+			$('#alert-danger').html("Falló la respuesta");
 		} 
+	});
+
+	event.preventDefault();
+
+});
+
+$('#loginForm').submit(function(event){
+
+	var parametros = $(this).serialize();
+
+	$.ajax({
+		type: "POST",
+		url: 'http://localhost/PPI/ajax/usuarios.php?apiusuarios=login_usuario',
+		data: parametros,
+		dataType: 'json',
+		success: function(data){
+			console.log(data);
+		},
+		error: function(data){
+			console.log("Error en el login");
+		}
 	});
 
 	event.preventDefault();

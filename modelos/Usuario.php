@@ -49,10 +49,9 @@ class Usuario extends Conexion
 
 	public function loginUsuariosModel($datosModel, $tabla)
 	{
-		$stmt = Conexion::conectar()->prepare("SELECT cod_usuario, nom_usuario, correo, password, cod_rol FROM $tabla WHERE nom_usuario = :nom_usuario AND password = :password");
+		$stmt = Conexion::conectar()->prepare("SELECT cod_usuario, nom_usuario, correo, password, cod_rol FROM $tabla WHERE nom_usuario = :nom_usuario");
 
 		$stmt->bindParam(":nom_usuario", $datosModel["nom_usuario"]);
-		$stmt->bindParam(":password", $datosModel["password"]);
 
 		$stmt->execute();
 
@@ -63,10 +62,14 @@ class Usuario extends Conexion
 
 		while ($fila = $stmt->fetch(PDO::FETCH_BOUND)) {
 			$user = array();
-			$user["nom_usuario"] = utf8_encode($nom_usuario);
-			$user["correo"] = utf8_encode($correo);
-			$user["password"] = utf8_encode($password);
-			$user["cod_rol"] = utf8_encode($cod_rol);
+			
+			if (password_verify($datosModel['password'], $password)) 
+			{
+				$user["nom_usuario"] = utf8_encode($nom_usuario);
+				$user["correo"] = utf8_encode($correo);
+				$user["password"] = utf8_encode($password);
+				$user["cod_rol"] = utf8_encode($cod_rol);
+			}
 
 		}
 

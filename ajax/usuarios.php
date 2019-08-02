@@ -30,6 +30,26 @@ if (isset($_GET['apiusuarios']))
 			}
 
 			break;
+
+		case 'login_usuario':
+		
+			$db = new UsuarioController();
+
+			$result = $db->loginUsuarioController($_POST['usuario'], $_POST['password']);
+
+			if ($result) 
+			{
+				$response['error'] = false;
+				$response['message'] = "Sesión iniciada";
+				$response['contenido'] = $result;
+			}
+			else
+			{
+				$response['error'] = true;
+				$response['message'] = "No se pudo iniciar sesión";
+			}
+
+
 		
 	}
 } else 

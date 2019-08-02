@@ -3,11 +3,16 @@
     <strong id="success"></strong>
 </div>
 
+<div class="alert alert-danger alert-dismissible" style="display: none;">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong id="danger"></strong>
+</div>
+
  <center>
  	<h3>Registro de Usuarios</h3>
  </center>
  <div class="container">
- 	<form id="registerUser" name="registerUser">
+ 	<form id="registerUser">
  		<div class="form-group row">
  		<label class="col-sm-4">Ingrese un correo electrónico y una contraseña</label>
  	</div>
@@ -46,6 +51,12 @@
  	</div>
  	</form>
  </div>
+
+ <?php
+
+include '../footer.php';
+
+ ?>
 
  <script src="recursos/js/roles.js"></script>
  <script src="recursos/js/usuarios.js"></script>

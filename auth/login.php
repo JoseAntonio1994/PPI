@@ -9,7 +9,7 @@
                 <div class="card-header">INICIAR SESIÓN</div>
 
                 <div class="card-body">
-                    <form method="POST" action="php/login.php">
+                    <form id="loginForm">
                    
                         <div class="form-group row">
                             <label for="usuario" class="col-md-4 col-form-label text-md-right">Usuario</label>
@@ -54,29 +54,4 @@
 	include '../footer.php';
 ?>
 
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
- <script type="text/javascript">
- 	$(document).ready(function () {
-    	$('#mensaje_error').hide();  
-	});
-
-	var cambioDePass = function() {
-			var cont = $('#contra').val();
-		    var cont2 = $('#contra2').val();
-		    if (cont == cont2) {
-		        $('#mensaje_error').hide();
-		        $('#mensaje_error').attr("class", "control-label col-md-12 text-success");
-		        $('#mensaje_error').show();
-		        $('#mensaje_error').html("Las constraseñas si coinciden");
-		        
-		    } else {
-		        $('#mensaje_error').html("Las constraseñas no coinciden");
-		        $('#mensaje_error').show();
-		        
-		    }
-		}
-
-	$("#contra").on('keyup', cambioDePass);
-	$("#contra2").on('keyup', cambioDePass);
- </script>
+<script src="recursos/js/usuarios.js"></script>
