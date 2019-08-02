@@ -1,9 +1,12 @@
 <nav class="nav">
     
         <div class="links">
-            <a href="index.php">
+            <a href="javascript:void(0)" id="home">
                 <span class="glyphicon glyphicon-home"></span>
             </a>
+
+            <a href='javascript:void(0)' id="login">Iniciar Sesión</a>
+            <a href='javascript:void(0)' id="register">Registro</a>
 
             <?php
                 session_start();
@@ -20,10 +23,6 @@
                     {
                         echo "<a href='configuracion.php' class='nav navbar-nav navbar-right'><span class='glyphicon glyphicon-cog'></span> Configuración</a>";
                     }
-                }
-                else {
-                    echo "<a href='javascript:void(0)' onclick='cargarInicioSesion()'>Iniciar Sesión</a>";
-                    echo "<a href='auth/registerUser.php'>Registro</a>";
                 }
             ?>
             

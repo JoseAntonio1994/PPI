@@ -7,7 +7,7 @@
         <img src="recursos/img/ppi.png" alt="PPI">
         <h2>Plataforma de Procesos Institucionales</h2>
         <?php
-			include 'footer.php';
+			include '../footer.php';
 		?>
     </div>
 </div>

@@ -5,7 +5,7 @@ $(document).ready(function () {
 //Función para cargar la lista de roles por medio de una petición ajax a un servicio web
 function cargarRoles() {
 	$.ajax({
-		url: '../ajax/roles.php?apiroles=leer_roles',
+		url: 'http://localhost/PPI/ajax/roles.php?apiroles=leer_roles',
 		type: 'GET',
 		contentType: "application/json;charset=utf-8",
 		dataType: 'json',
