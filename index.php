@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="recursos/css/index.css">
+    <link rel="stylesheet" type="text/css" href="recursos/css/menus.css">
 </head>
 <body>
 	<?php
