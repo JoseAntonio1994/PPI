@@ -62,14 +62,15 @@
                     echo "<a href='javascript:void(0)' onclick='cargarEmpresa()'>Empresas</a>";
                 }
             } 
-            else 
+           /* else 
             {
                 echo "<a href='javascript:void(0)' onclick='cargarAlumno()'>Alumnos</a>";
                 echo "<a href='javascript:void(0)' onclick='cargarDocente()'>Docentes</a>";
                 echo "<a href='javascript:void(0)' onclick='cargarJefe()'>Jefe de departamento</a>";
                 echo "<a href='javascript:void(0)' onclick='cargarAdministrativo()'>Administrativos</a>";
                 echo "<a href='javascript:void(0)' onclick='cargarEmpresa()'>Empresas</a>";
-            }
+            } */
         ?>
     </div>
 </nav>
+
