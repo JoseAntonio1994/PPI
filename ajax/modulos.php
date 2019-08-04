@@ -16,6 +16,26 @@ if (isset($_GET['apimodulos']))
 			$response["message"] = "Solicitud completada";
 			$response["contenido"] = $db->readModuloController();
 			break;
+
+		case 'asignar_modulos':
+		
+			$db = new ModuloController();
+
+			$result = $db->readModuloRolController($_POST['cod_rol']);
+
+			if ($result)
+			{
+				$response["error"] = false;
+				$response["message"] = "Solicitud completada";
+				$response["contenido"] = $result;
+			}else
+			{
+				$response["error"] = true;
+				$response["message"] = "Hubo un error al asignar los modulos";
+			}
+
+			
+			break;	
 		
 	}
 } else 
