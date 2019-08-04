@@ -37,10 +37,16 @@ $('#loginForm').submit(function(event){
 		data: parametros,
 		dataType: 'json',
 		success: function(data){
-			console.log(data);
+
+			var nom_usuario = data['contenido'].nom_usuario;
+			var correo = data['contenido'].correo;
+			var password = data['contenido'].password;
+			var cod_rol = data['contenido'].cod_rol;
+
+			
 		},
 		error: function(data){
-			console.log("Error en el login");
+			alert("Error en el login");
 		}
 	});
 
