@@ -49,7 +49,27 @@ if (isset($_GET['apiusuarios']))
 				$response['message'] = "Usuario o contraseña incorrectos";
 			}
 
+			break;
 
+		case 'change_password':
+
+			$db = new UsuarioController();
+
+			$result = $db->updateUsuarioPasswordController($_POST['cod_usuario'], $_POST['password']);
+
+			if ($result) 
+			{
+				$response['error'] = false;
+				$response['message'] = "Se cambió la contraseña";
+				$response['contenido'] = $result;
+			}
+			else
+			{
+				$response['error'] = true;
+				$response['message'] = "No se pudo cambiar la contraseña";
+			}
+
+			break;
 		
 	}
 } else 

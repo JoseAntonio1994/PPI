@@ -50,7 +50,17 @@
           <h4 class="modal-title">CAMBIAR CONTRASEÑA</h4>
         </div>
         <div class="modal-body">
-          <form id="form-pass" method="POST" action="php/changePassword.php">
+          <form id="changePasswordForm">
+            <div class="form-group row">
+             <div class="col-md-12">
+              <div class="col-sm-6">
+                <label for="cod_rol" class="col-form-label text-md-right">Código de rol:</label>
+              </div>
+              <div class="col-md-4">
+                <input id="cod_rol" type="text" class="form-control" value="<?php echo $_SESSION['cod_rol']; ?>" required autocomplete="cod_rol" disabled>
+              </div>
+             </div>
+          </div>
           	<div class="form-group row">
           	 <div class="col-md-12">
           	 	<div class="col-sm-6">
@@ -110,7 +120,7 @@
           <h4 class="modal-title">CAMBIAR CORREO ELECTRÓNICO</h4>
         </div>
         <div class="modal-body">
-          <form action="php/changeEmail.php" method="POST">
+          <form id="changeEmailForm">
           	<div class="form-group row">
           	 <div class="col-md-12">
           	 	<div class="col-sm-6">
@@ -148,6 +158,7 @@
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ <script src="recursos/js/usuarios.js"></script>
  <script type="text/javascript">
  	$(document).ready(function () {
     	$('#mensaje_error').hide();  

@@ -68,6 +68,19 @@ $('#loginForm').submit(function(event){
 
 });
 
+//Función para cambiar la contraseña en la opción de perfil de usuario
+$('#changePasswordForm').submit(function(event){
+
+	var cod_rol = $('#cod_rol').val();
+	var password = $('#password').val();
+	var new_password = $('#new_password').val();
+
+	$.ajax({
+		type: 'POST',
+		url: 'http://localhost/PPI/ajax/usuarios.php?apiusuarios=change_password'
+	});
+});
+
 function cargarSession(cod_usuario, nom_usuario, correo, cod_rol, created_at){
 
 	var parametros = {
