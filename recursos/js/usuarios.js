@@ -42,9 +42,11 @@ $('#loginForm').submit(function(event){
 			if (data['error'] == false) {
 				var cod_usuario = data['contenido'].cod_usuario;
 				var nom_usuario = data['contenido'].nom_usuario;
+				var correo = data['contenido'].correo;
 				var cod_rol = data['contenido'].cod_rol;
+				var created_at = data['contenido'].created_at;
 
-				cargarSession(cod_usuario, nom_usuario, cod_rol);
+				cargarSession(cod_usuario, nom_usuario, correo, cod_rol, created_at);
 
 				$('#menu_seleccionado').empty();
 				$('#menu_seleccionado').load("menus/inicio.php");
@@ -57,7 +59,8 @@ $('#loginForm').submit(function(event){
 			}
 		},
 		error: function(data){
-			alert("Error en el login");
+			var html = '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Error en el login</div>';
+			$('.mensaje_error').html(html);
 		}
 	});
 
@@ -65,12 +68,14 @@ $('#loginForm').submit(function(event){
 
 });
 
-function cargarSession(cod_usuario, nom_usuario, cod_rol){
+function cargarSession(cod_usuario, nom_usuario, correo, cod_rol, created_at){
 
 	var parametros = {
 		"cod_usuario" : cod_usuario,
 		"nom_usuario" : nom_usuario,
-		"cod_rol" : cod_rol
+		"correo": correo,
+		"cod_rol" : cod_rol,
+		"created_at": created_at
 	};
 
 	$.ajax({
