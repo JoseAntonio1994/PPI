@@ -25,10 +25,7 @@
 				    </div>
                 </div>
                 <div class="col-md-10 b">
-                	<label for="nombre" class="col-sm-2">Rol:</label>
-					<div class="col-sm-4">
-				      <input type="text" class="form-control" value="<?php echo $_SESSION['nom_rol'] ?>" disabled>
-				    </div>
+                	
 				    <label for="nombre" class="col-sm-2">Fecha de alta:</label>
 				    <div class="col-sm-4">
 				      <input type="text" class="form-control" value="<?php echo $_SESSION['created_at'] ?>" disabled>
