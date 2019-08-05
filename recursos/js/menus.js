@@ -19,3 +19,9 @@ $('#register').click(function(e){
 	$('#menu_seleccionado').load("auth/registerUser.php");
 	e.preventDefault();
 });
+
+$('#perfil').click(function(e){
+	$('#menu_seleccionado').empty();
+	$('#menu_seleccionado').load("perfil.php");
+	e.preventDefault();
+});

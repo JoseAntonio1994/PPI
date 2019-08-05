@@ -1,54 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<title>Perfil</title>
-
-	<link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-
-    <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="recursos/css/index.css">
-
-</head>
-<body>
-
-	<?php
-		include 'header.php';
-		include 'navbar.php';
-
-		if (isset($_SESSION['mensaje']) && isset($_SESSION['aviso'])) 
-		{
-			if ($_SESSION['aviso'] == "success") 
-			{
-				echo "<div class='container' style='margin-top: 10px;'><div class='alert alert-success alert-dismissible'>
-			    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-			    <strong>Success!</strong> ".$_SESSION['mensaje']."
-			  	</div></div>";
-			}
-			elseif ($_SESSION['aviso'] == "no") 
-			{
-				echo "<div class='container' style='margin-top: 10px;'><div class='alert alert-danger alert-dismissible fade in'>
-			    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-			    <strong>Error!</strong> ".$_SESSION['mensaje']."
-			  	</div></div>";
-			}
-			elseif ($_SESSION['aviso'] == "error") 
-			{
-				echo "<div class='container' style='margin-top: 10px;'><div class='alert alert-danger alert-dismissible fade in'>
-			    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-			    <strong>Error!</strong> ".$_SESSION['mensaje']."
-			  	</div></div>";
-			}
-
-			unset($_SESSION['mensaje']);
-			unset($_SESSION['aviso']);
-		}
-	?>
-
+<?php session_start(); ?>
 	<center>
 		<h2>Perfil</h2>
 	</center>
@@ -225,5 +175,3 @@
 	$("#new_password").on('keyup', cambioDePass);
 	$("#password_again").on('keyup', cambioDePass);
  </script>
-</body>
-</html>
