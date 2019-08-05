@@ -46,7 +46,7 @@ if (isset($_GET['apiusuarios']))
 			else
 			{
 				$response['error'] = true;
-				$response['message'] = "No se pudo iniciar sesión";
+				$response['message'] = "Usuario o contraseña incorrectos";
 			}
 
 

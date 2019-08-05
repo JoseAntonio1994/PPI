@@ -1,9 +1,11 @@
 <link rel="stylesheet" type="text/css" href="recursos/css/login.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<div class="mensaje_error"></div>
 
 <div class="container">
+
     <div class="justify-content-center">
+
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">INICIAR SESIÓN</div>

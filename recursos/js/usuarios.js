@@ -39,15 +39,22 @@ $('#loginForm').submit(function(event){
 		dataType: 'json',
 		success: function(data){
 
-			var cod_usuario = data['contenido'].cod_usuario;
-			var nom_usuario = data['contenido'].nom_usuario;
-			var cod_rol = data['contenido'].cod_rol;
+			if (data['error'] == false) {
+				var cod_usuario = data['contenido'].cod_usuario;
+				var nom_usuario = data['contenido'].nom_usuario;
+				var cod_rol = data['contenido'].cod_rol;
 
-			cargarSession(cod_usuario, nom_usuario, cod_rol);
+				cargarSession(cod_usuario, nom_usuario, cod_rol);
 
-			$('#menu_seleccionado').empty();
-			$('#menu_seleccionado').load("menus/inicio.php");
-			location.reload();
+				$('#menu_seleccionado').empty();
+				$('#menu_seleccionado').load("menus/inicio.php");
+				location.reload();
+			} 
+			else 
+			{
+				var html = '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+ data['message'] +'</div>';
+				$('.mensaje_error').html(html);
+			}
 		},
 		error: function(data){
 			alert("Error en el login");
