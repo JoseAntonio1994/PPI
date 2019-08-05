@@ -1,5 +1,17 @@
 $(document).ready(function () {
-    cargarModulos();
+    //cargarModulos();
+    $.ajax({
+    	url: 'session.php',
+    	type: 'POST',
+    	data: {},
+    	success: function(data){
+    		if (data == 'NS') { cargarModulos(); }
+    		else { cargarRolModulos(data); }
+    	},
+    	error: function(data){
+    		alert("No se muestran los modulos");
+    	}
+    });
 });
 
 function cargarModulos(){
@@ -21,6 +33,33 @@ function cargarModulos(){
 		error: function(data) {
 			alert("Error al mostrar los modulos");
 		} 
+	});
+}
+
+//Función para cargar los módulos de acuerdo al rol del usuario al existir la sesión
+function cargarRolModulos(cod_rol){
+
+	var parametros = { "cod_rol": cod_rol };
+
+	$.ajax({
+		type: 'POST',
+		url: 'http://localhost/PPI/ajax/modulos.php?apimodulos=asignar_modulos',
+		data: parametros,
+		dataType: 'json',
+		success: function(data){
+
+			var modulos = '';
+
+			$.each(data["contenido"], function(key, item){
+				modulos += '<a href="javascript:void(0)" onclick="cargarSistemas(' + item.cod_modulo + ')">' + item.nom_modulo + '</a>';
+			});
+
+			$('.modulos').html(modulos);
+
+		},
+		error: function(){
+			alert("No se asignó correctamente los modulos");
+		}
 	});
 }
 

@@ -38,12 +38,14 @@ $('#loginForm').submit(function(event){
 		dataType: 'json',
 		success: function(data){
 
-			var nom_usuario = data['contenido'].nom_usuario;
-			var correo = data['contenido'].correo;
-			var password = data['contenido'].password;
+			var cod_usuario = data['contenido'].cod_usuario;
 			var cod_rol = data['contenido'].cod_rol;
 
-			
+			cargarSession(cod_usuario, cod_rol);
+
+			$('#menu_seleccionado').empty();
+			$('#menu_seleccionado').load("menus/inicio.php");
+			location.reload();
 		},
 		error: function(data){
 			alert("Error en el login");
@@ -53,6 +55,27 @@ $('#loginForm').submit(function(event){
 	event.preventDefault();
 
 });
+
+function cargarSession(cod_usuario, cod_rol){
+
+	var parametros = {
+		"cod_usuario" : cod_usuario,
+		"cod_rol" : cod_rol
+	};
+
+	$.ajax({
+		type: 'POST',
+		url: 'session.php',
+		data: parametros,
+		dataType: 'json',
+		success: function(data){
+
+		},
+		error: function(data){
+			alert("No se pudo crear las variables de sesion");
+		}
+	});
+}
 
 function limpiar(){
 	$('#nom_usuario').val("");
