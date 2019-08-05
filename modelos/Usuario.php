@@ -49,13 +49,14 @@ class Usuario extends Conexion
 
 	public function loginUsuariosModel($datosModel, $tabla)
 	{
-		$stmt = Conexion::conectar()->prepare("SELECT cod_usuario, password, cod_rol FROM $tabla WHERE nom_usuario = :nom_usuario");
+		$stmt = Conexion::conectar()->prepare("SELECT cod_usuario, nom_usuario, password, cod_rol FROM $tabla WHERE nom_usuario = :nom_usuario");
 
 		$stmt->bindParam(":nom_usuario", $datosModel["nom_usuario"]);
 
 		$stmt->execute();
 
 		$stmt->bindColumn("cod_usuario", $cod_usuario);
+		$stmt->bindColumn("nom_usuario", $nom_usuario);
 		$stmt->bindColumn("password", $password);
 		$stmt->bindColumn("cod_rol", $cod_rol);
 
@@ -65,6 +66,7 @@ class Usuario extends Conexion
 			if (password_verify($datosModel['password'], $password)) 
 			{
 				$user["cod_usuario"] = utf8_encode($cod_usuario);
+				$user["nom_usuario"] = utf8_encode($nom_usuario);
 				$user["cod_rol"] = utf8_encode($cod_rol);
 			}
 

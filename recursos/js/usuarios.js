@@ -27,6 +27,7 @@ $('#registerUser').submit(function(event){
 
 });
 
+//Función para capturar los valores del formulario de login y realizar una petición al servidor para saber si existe las credenciales del usuario
 $('#loginForm').submit(function(event){
 
 	var parametros = $(this).serialize();
@@ -39,9 +40,10 @@ $('#loginForm').submit(function(event){
 		success: function(data){
 
 			var cod_usuario = data['contenido'].cod_usuario;
+			var nom_usuario = data['contenido'].nom_usuario;
 			var cod_rol = data['contenido'].cod_rol;
 
-			cargarSession(cod_usuario, cod_rol);
+			cargarSession(cod_usuario, nom_usuario, cod_rol);
 
 			$('#menu_seleccionado').empty();
 			$('#menu_seleccionado').load("menus/inicio.php");
@@ -56,10 +58,11 @@ $('#loginForm').submit(function(event){
 
 });
 
-function cargarSession(cod_usuario, cod_rol){
+function cargarSession(cod_usuario, nom_usuario, cod_rol){
 
 	var parametros = {
 		"cod_usuario" : cod_usuario,
+		"nom_usuario" : nom_usuario,
 		"cod_rol" : cod_rol
 	};
 
@@ -69,10 +72,10 @@ function cargarSession(cod_usuario, cod_rol){
 		data: parametros,
 		dataType: 'json',
 		success: function(data){
-
+			console.log("Variables de sesión creadas");
 		},
 		error: function(data){
-			alert("No se pudo crear las variables de sesion");
+			console.log("No se pudo crear las variables de sesion");
 		}
 	});
 }

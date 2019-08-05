@@ -14,6 +14,7 @@ $(document).ready(function () {
     });
 });
 
+//Función para cargar los modulos para un usuario no registrado o que se este visitando la plataforma
 function cargarModulos(){
 	$.ajax({
 		url: 'http://localhost/PPI/ajax/modulos.php?apimodulos=leer_modulos',
@@ -93,3 +94,27 @@ function cargarSistemas(index){
 		} 
 	});
 }
+
+//Función para cerrar la sesión del usuario
+$('#logout').click(function(e){
+
+	var logout = 'logout';
+
+	var parametros = {"logout": logout};
+
+	$.ajax({
+		type: 'POST',
+		url: 'session.php',
+		data: parametros,
+		dataType: 'json',
+		success: function(){
+			$('#menu_seleccionado').empty();
+			$('#menu_seleccionado').load("menus/inicio.php");
+			location.reload();
+		},
+		error: function(){
+			alert("No se pudo cerrar la sesión");
+		}
+	});
+
+});
