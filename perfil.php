@@ -7,7 +7,7 @@
 	</center>
 
 	<div class="contenedor">
-		<form method="POST" action="">
+		<form>
 			 <div class="form-group row">
                 <div class="col-md-2">
                 	<center>

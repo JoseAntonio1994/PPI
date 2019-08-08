@@ -89,12 +89,12 @@ $('#changePasswordForm').submit(function(event){
 		success: function(data){
 			var html = '<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+ data['message'] +'</div>';
 				$('.mensaje_error').html(html);
-			console.log(data);	
+			alert(data);	
 		},
 		error: function(data){
 			var html = '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Error al cambiar la contraseña</div>';
 				$('.mensaje_error').html(html);
-				console.log("Error al cambiar la contraseña");
+				alert("Error al cambiar la contraseña");
 		} 
 	});
 
