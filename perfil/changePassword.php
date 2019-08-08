@@ -1,5 +1,7 @@
 <link rel="stylesheet" type="text/css" href="recursos/css/login.css">
 
+<?php session_start(); ?>
+
 <div class="mensaje_error"></div>
 
 <div class="container">
@@ -12,6 +14,14 @@
 
                 <div class="card-body">
                     <form id="changePasswordForm">
+
+                        <div class="form-group row">
+                            <label for="cod_usuario" class="col-md-4 col-form-label text-md-right">Código</label>
+
+                            <div class="col-md-6">
+                                <input id="cod_usuario" type="text" class="form-control" value="<?php echo $_SESSION['cod_usuario']; ?>" disabled>
+                            </div>
+                        </div>
                    
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">Contraseña actual</label>
@@ -37,6 +47,10 @@
                             </div>
                         </div>
 
+                        <center>
+                            <label id="conf" class="control-label col-md-12 text-success" style="display: block;">Las constraseñas si coinciden</label>
+                          </center>
+
                         <div class="form-group">
                             <div class="center">
                                 <button type="submit" class="btn btn-primary">
@@ -53,21 +67,21 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#mensaje_error').hide();  
+        $('#conf').hide();  
     });
 
     var cambioDePass = function() {
             var cont = $('#new_password').val();
             var cont2 = $('#password_again').val();
             if (cont == cont2) {
-                $('#mensaje_error').hide();
-                $('#mensaje_error').attr("class", "control-label col-md-12 text-success");
-                $('#mensaje_error').show();
-                $('#mensaje_error').html("Las constraseñas si coinciden");
+                $('#conf').hide();
+                $('#conf').attr("class", "control-label col-md-12 text-success");
+                $('#conf').show();
+                $('#conf').html("Las constraseñas si coinciden");
                 $('button[type="submit"]').removeAttr('disabled');
             } else {
-                $('#mensaje_error').html("Las constraseñas no coinciden");
-                $('#mensaje_error').show();
+                $('#conf').html("Las constraseñas no coinciden");
+                $('#conf').show();
                 $('button[type="submit"]').attr('disabled','disabled');
             }
         }
@@ -79,3 +93,7 @@
 <?php
 	include '../footer.php';
 ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="recursos/js/usuarios.js"></script>
