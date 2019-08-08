@@ -79,6 +79,29 @@ class Usuario extends Conexion
 		return $respuesta = (!empty($user)) ? $user : false;
 	}
 
+	function verifyUsuarioPasswordModel($datosModel, $tabla)
+	{
+		$stmt = Conexion::conectar()->prepare("SELECT password FROM $tabla WHERE cod_usuario = :cod_usuario");
+
+		$stmt->bindParam(":cod_usuario", $datosModel["cod_usuario"], PDO::PARAM_INT);
+
+		$stmt->execute();
+
+		$stmt->bindColumn("password", $password);
+
+		while ($fila = $stmt->fetch(PDO::FETCH_BOUND)) 
+		{
+			if (password_verify($datosModel["password"], $password)) 
+			{
+				$respuesta = true;
+			}
+			else
+				$respuesta = false;
+		}
+
+		return $respuesta;
+	}
+
 	public function updateUsuarioEmailModel($datosModel, $tabla)
 	{
 		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET correo = :correo  WHERE cod_usuario = :cod_usuario");
@@ -91,12 +114,17 @@ class Usuario extends Conexion
 
 	public function updateUsuarioPasswordModel($datosModel, $tabla)
 	{
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET password = :password  WHERE cod_usuario = :cod_usuario");
+		if (verifyUsuarioPasswordModel($datosModel, $tabla)) 
+		{
+			$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET password = :new_password  WHERE cod_usuario = :cod_usuario");
 
-		$stmt->bindParam(":password", $datosModel["password"], PDO::PARAM_STR);
-		$stmt->bindParam(":cod_usuario", $datosModel["cod_usuario"], PDO::PARAM_INT);
+			$stmt->bindParam(":new_password", $datosModel["new_password"], PDO::PARAM_STR);
+			$stmt->bindParam(":cod_usuario", $datosModel["cod_usuario"], PDO::PARAM_INT);
 
-		return $respuesta = ($stmt->execute()) ? true : false;
+			return $respuesta = ($stmt->execute()) ? true : false;
+		}
+		else
+			return $respuesta = false;
 	}
 
 	public function deleteUsuarioModel($id, $tabla)

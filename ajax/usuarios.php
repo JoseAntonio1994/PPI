@@ -55,7 +55,7 @@ if (isset($_GET['apiusuarios']))
 
 			$db = new UsuarioController();
 
-			$result = $db->updateUsuarioPasswordController($_POST['cod_usuario'], $_POST['password']);
+			$result = $db->updateUsuarioPasswordController($_POST['cod_usuario'], $_POST['password'], $_POST['new_password']);
 
 			if ($result) 
 			{
@@ -70,6 +70,26 @@ if (isset($_GET['apiusuarios']))
 			}
 
 			break;
+
+		case 'verify_password':
+		
+			$db = new UsuarioController();
+
+			$result = $db->verifyUsuarioPasswordController($_POST['cod_usuario'], $_POST['password']);
+
+			if ($result) 
+			{
+				$response['error'] = false;
+				$response['message'] = "Las contraseñas son iguales";
+				$response['contenido'] = $result;
+			}
+			else
+			{
+				$response['error'] = true;
+				$response['message'] = "No son iguales las contraseñas";
+			}
+
+			break;	
 		
 	}
 } else 

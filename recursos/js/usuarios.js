@@ -71,14 +71,34 @@ $('#loginForm').submit(function(event){
 //Función para cambiar la contraseña en la opción de perfil de usuario
 $('#changePasswordForm').submit(function(event){
 
-	var cod_rol = $('#cod_rol').val();
+	var cod_usuario = $('#cod_usuario').val();
 	var password = $('#password').val();
-	var new_password = $('#new_password').val();
+	//var new_password = $('#new_password').val();
+
+	var parametros = {
+		"cod_usuario": cod_usuario,
+		"password": password,
+		//"new_password": new_password
+	};
 
 	$.ajax({
 		type: 'POST',
-		url: 'http://localhost/PPI/ajax/usuarios.php?apiusuarios=change_password'
+		url: 'http://localhost/PPI/ajax/usuarios.php?apiusuarios=verify_password',
+		data: parametros,
+		dataType: 'json',
+		success: function(data){
+			var html = '<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+ data['message'] +'</div>';
+				$('.mensaje_error').html(html);
+			console.log(data);	
+		},
+		error: function(data){
+			var html = '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Error al cambiar la contraseña</div>';
+				$('.mensaje_error').html(html);
+				console.log("Error al cambiar la contraseña");
+		} 
 	});
+
+	event.preventDefault();
 });
 
 function cargarSession(cod_usuario, nom_usuario, correo, cod_rol, created_at){

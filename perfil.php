@@ -1,4 +1,7 @@
 <?php session_start(); ?>
+
+<div class="mensaje_error"></div>
+
 	<center>
 		<h2>Perfil</h2>
 	</center>
@@ -50,14 +53,15 @@
           <h4 class="modal-title">CAMBIAR CONTRASEÑA</h4>
         </div>
         <div class="modal-body">
+
           <form id="changePasswordForm">
             <div class="form-group row">
              <div class="col-md-12">
               <div class="col-sm-6">
-                <label for="cod_rol" class="col-form-label text-md-right">Código de rol:</label>
+                <label for="cod_usuario" class="col-form-label text-md-right">Código de usuario:</label>
               </div>
               <div class="col-md-4">
-                <input id="cod_rol" type="text" class="form-control" value="<?php echo $_SESSION['cod_rol']; ?>" required autocomplete="cod_rol" disabled>
+                <input id="cod_usuario" type="text" class="form-control" value="<?php echo $_SESSION['cod_usuario']; ?>" required autocomplete="cod_usuario" disabled>
               </div>
              </div>
           </div>
