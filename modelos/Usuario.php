@@ -114,17 +114,12 @@ class Usuario extends Conexion
 
 	public function updateUsuarioPasswordModel($datosModel, $tabla)
 	{
-		if (verifyUsuarioPasswordModel($datosModel, $tabla)) 
-		{
-			$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET password = :new_password  WHERE cod_usuario = :cod_usuario");
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET password = :new_password  WHERE cod_usuario = :cod_usuario");
 
-			$stmt->bindParam(":new_password", $datosModel["new_password"], PDO::PARAM_STR);
-			$stmt->bindParam(":cod_usuario", $datosModel["cod_usuario"], PDO::PARAM_INT);
+		$stmt->bindParam(":new_password", $datosModel["new_password"], PDO::PARAM_STR);
+		$stmt->bindParam(":cod_usuario", $datosModel["cod_usuario"], PDO::PARAM_INT);
 
-			return $respuesta = ($stmt->execute()) ? true : false;
-		}
-		else
-			return $respuesta = false;
+		return $respuesta = ($stmt->execute()) ? true : false;
 	}
 
 	public function deleteUsuarioModel($id, $tabla)

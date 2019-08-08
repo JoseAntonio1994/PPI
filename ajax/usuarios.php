@@ -55,7 +55,9 @@ if (isset($_GET['apiusuarios']))
 
 			$db = new UsuarioController();
 
-			$result = $db->updateUsuarioPasswordController($_POST['cod_usuario'], $_POST['password'], $_POST['new_password']);
+			$password_hash = password_hash($_POST["new_password"], PASSWORD_DEFAULT);
+
+			$result = $db->updateUsuarioPasswordController($_POST['cod_usuario'], $password_hash);
 
 			if ($result) 
 			{

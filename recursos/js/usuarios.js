@@ -102,12 +102,12 @@ $('#changePasswordForm').submit(function(event){
 		dataType: 'json',
 		success: function(data){
 			var html = '<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+ data['message'] +'</div>';
-				$('.mensaje_error').html(html);
+				$('.mensaje').html(html);
 			console.log(data);		
 		},
 		error: function(data){
 			var html = '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Error al cambiar la contraseña</div>';
-				$('.mensaje_error').html(html);
+				$('.mensaje').html(html);
 				alert("Error al cambiar la contraseña");
 		} 
 	});

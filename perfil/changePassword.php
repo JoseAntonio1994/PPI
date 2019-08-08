@@ -2,7 +2,7 @@
 
 <?php session_start(); ?>
 
-<div class="mensaje_error"></div>
+<div class="mensaje"></div>
 
 <div class="container">
 

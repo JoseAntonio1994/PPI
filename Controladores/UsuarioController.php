@@ -51,9 +51,9 @@ class UsuarioController {
 		return $respuesta;
 	}
 
-	public function updateUsuarioPasswordController($cod_usuario, $password, $new_password)
+	public function updateUsuarioPasswordController($cod_usuario, $new_password)
 	{
-		$datosController = array("cod_usuario"=>$cod_usuario, "password"=>$password, "new_password"=>$new_password);
+		$datosController = array("cod_usuario"=>$cod_usuario, "new_password"=>$new_password);
 
 		$respuesta = Usuario::updateUsuarioPasswordModel($datosController, "usuarios");
 
