@@ -20,8 +20,10 @@ $('#register').click(function(e){
 	e.preventDefault();
 });
 
+//Función para invocar a la opción de perfil de usuario
 $('#perfil').click(function(e){
 	$('#menu_seleccionado').empty();
 	$('#menu_seleccionado').load("perfil.php");
 	e.preventDefault();
 });
+

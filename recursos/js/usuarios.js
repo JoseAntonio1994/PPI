@@ -68,6 +68,20 @@ $('#loginForm').submit(function(event){
 
 });
 
+//Función para invocar al formulario de cambiar contraseña
+$('#changePassword').click(function(e){
+	$('#menu_seleccionado').empty();
+	$('#menu_seleccionado').load("perfil/changePassword.php");
+	e.preventDefault();
+});
+
+//Función para invocar al formulario de cambiar contraseña
+$('#changeEmail').click(function(e){
+	$('#menu_seleccionado').empty();
+	$('#menu_seleccionado').load("perfil/changeEmail.php");
+	e.preventDefault();
+});
+
 //Función para cambiar la contraseña en la opción de perfil de usuario
 $('#changePasswordForm').submit(function(event){
 
