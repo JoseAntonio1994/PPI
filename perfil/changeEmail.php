@@ -2,7 +2,7 @@
 
 <?php session_start(); ?>
 
-<div class="mensaje_error"></div>
+<div class="mensaje"></div>
 
 <div class="container">
 
@@ -39,6 +39,10 @@
                             </div>
                         </div>
 
+                        <center>
+                            <label id="conf" class="control-label col-md-12 text-success" style="display: block;"></label>
+                          </center>
+
                         <div class="form-group">
                             <div class="center">
                                 <button type="submit" class="btn btn-primary">
@@ -56,3 +60,6 @@
 <?php
     include '../footer.php';
 ?>
+
+<script src="recursos/js/usuarios.js"></script>
+<script src="recursos/js/verify_password.js"></script>

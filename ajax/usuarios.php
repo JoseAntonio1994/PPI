@@ -91,8 +91,27 @@ if (isset($_GET['apiusuarios']))
 				$response['message'] = "No son iguales las contraseñas";
 			}
 
-			break;	
-		
+			break;
+
+		case 'change_email':
+				
+			$db = new UsuarioController();
+
+			$result = $db->updateUsuarioEmailController($_POST['cod_usuario'], $_POST['correo']);
+
+			if ($result) 
+			{
+				$response['error'] = false;
+				$response['message'] = "Se cambió el correo electrónico";
+				$response['contenido'] = $result;
+			}
+			else
+			{
+				$response['error'] = true;
+				$response['message'] = "No se pudo cambiar el correo electrónico";
+			}
+
+			break;
 	}
 } else 
 {

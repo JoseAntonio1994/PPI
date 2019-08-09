@@ -48,7 +48,7 @@
                         </div>
 
                         <center>
-                            <label id="conf" class="control-label col-md-12 text-success" style="display: block;">Las constraseñas si coinciden</label>
+                            <label id="conf" class="control-label col-md-12 text-success" style="display: block;"></label>
                           </center>
 
                         <div class="form-group">
@@ -65,31 +65,6 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#conf').hide();  
-    });
-
-    var cambioDePass = function() {
-            var cont = $('#new_password').val();
-            var cont2 = $('#password_again').val();
-            if (cont == cont2) {
-                $('#conf').hide();
-                $('#conf').attr("class", "control-label col-md-12 text-success");
-                $('#conf').show();
-                $('#conf').html("Las constraseñas si coinciden");
-                $('button[type="submit"]').removeAttr('disabled');
-            } else {
-                $('#conf').html("Las constraseñas no coinciden");
-                $('#conf').show();
-                $('button[type="submit"]').attr('disabled','disabled');
-            }
-        }
-
-    $("#new_password").on('keyup', cambioDePass);
-    $("#password_again").on('keyup', cambioDePass);
-</script>
-
 <?php
 	include '../footer.php';
 ?>
@@ -97,3 +72,4 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="recursos/js/usuarios.js"></script>
+<script src="recursos/js/verify_password.js"></script>

@@ -94,59 +94,65 @@ $('#changePasswordForm').submit(function(event){
 		"new_password": new_password
 	};
 
-	if (verificarPassword(cod_usuario, password)) {
-
-		$.ajax({
-			type: 'POST',
-			url: 'http://localhost/PPI/ajax/usuarios.php?apiusuarios=change_password',
-			data: parametros,
-			dataType: 'json',
-			success: function(data){
-				var html = '<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+ data['message'] +'</div>';
-				$('.mensaje').html(html);
-						
-			},
-			error: function(data){
-				var html = '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Error al cambiar la contraseña</div>';
-				$('.mensaje').html(html);
+	$.ajax({
+		type: 'POST',
+		url: 'http://localhost/PPI/ajax/usuarios.php?apiusuarios=change_password',
+		data: parametros,
+		dataType: 'json',
+		success: function(data){
+			var html = '<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+ data['message'] +'</div>';
+			$('.mensaje').html(html);
 					
-			} 
-		});
-
-	}
-	else{
-		var html = '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>No son iguales las contraseñas</div>';
-		$('.mensaje').html(html);
-	}
+		},
+		error: function(data){
+			var html = '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Error al cambiar la contraseña</div>';
+			$('.mensaje').html(html);
+				
+		} 
+	});
 
 	event.preventDefault();
 });
 
-function verificarPassword(cod_usuario, password){
+//Función para invocar al formulario de cambiar contraseña al darle click al botón de cambiar contraseña
+$('#changeEmail').click(function(e){
+	$('#menu_seleccionado').empty();
+	$('#menu_seleccionado').load("perfil/changeEmail.php");
+	e.preventDefault();
+});
+
+//Función para cambiar el correo electrónico en la opción de perfil de usuario
+$('#changeEmailForm').submit(function(event){
+
+	var cod_usuario = $('#cod_usuario').val();
+	var password = $('#password').val();
+	var correo = $('#email').val();
 
 	var parametros = {
 		"cod_usuario": cod_usuario,
-		"password": password
+		"correo": correo
 	};
 
 	$.ajax({
 		type: 'POST',
-		url: 'http://localhost/PPI/ajax/usuarios.php?apiusuarios=verify_password',
+		url: 'http://localhost/PPI/ajax/usuarios.php?apiusuarios=change_email',
 		data: parametros,
 		dataType: 'json',
 		success: function(data){
-			if (data['error'] == false) {
-				return true;
-			} else{
-				return false;
-			}		
+			var html = '<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+ data['message'] +'</div>';
+			$('.mensaje').html(html);
+					
 		},
-		error: function(data){
-			return false;
-
+		error: function(){
+			var html = '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Error al cambiar la contraseña</div>';
+			$('.mensaje').html(html);
+				
 		} 
 	});
-}
+
+	event.preventDefault();
+});
+
 
 function cargarSession(cod_usuario, nom_usuario, correo, cod_rol, created_at){
 
