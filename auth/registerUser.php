@@ -1,4 +1,4 @@
-<div class="alert alert-success alert-dismissible">
+<div class="alert alert-success alert-dismissible" style="display: none;">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong id="success"></strong>
 </div>
