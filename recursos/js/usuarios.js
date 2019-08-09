@@ -87,12 +87,46 @@ $('#changePasswordForm').submit(function(event){
 
 	var cod_usuario = $('#cod_usuario').val();
 	var password = $('#password').val();
-	//var new_password = $('#new_password').val();
+	var new_password = $('#new_password').val();
 
 	var parametros = {
 		"cod_usuario": cod_usuario,
-		"password": password,
-		//"new_password": new_password
+		"new_password": new_password
+	};
+
+	if (verificarPassword(cod_usuario, password)) {
+
+		$.ajax({
+			type: 'POST',
+			url: 'http://localhost/PPI/ajax/usuarios.php?apiusuarios=change_password',
+			data: parametros,
+			dataType: 'json',
+			success: function(data){
+				var html = '<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+ data['message'] +'</div>';
+				$('.mensaje').html(html);
+						
+			},
+			error: function(data){
+				var html = '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Error al cambiar la contraseña</div>';
+				$('.mensaje').html(html);
+					
+			} 
+		});
+
+	}
+	else{
+		var html = '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>No son iguales las contraseñas</div>';
+		$('.mensaje').html(html);
+	}
+
+	event.preventDefault();
+});
+
+function verificarPassword(cod_usuario, password){
+
+	var parametros = {
+		"cod_usuario": cod_usuario,
+		"password": password
 	};
 
 	$.ajax({
@@ -101,19 +135,18 @@ $('#changePasswordForm').submit(function(event){
 		data: parametros,
 		dataType: 'json',
 		success: function(data){
-			var html = '<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+ data['message'] +'</div>';
-				$('.mensaje').html(html);
-			console.log(data);		
+			if (data['error'] == false) {
+				return true;
+			} else{
+				return false;
+			}		
 		},
 		error: function(data){
-			var html = '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Error al cambiar la contraseña</div>';
-				$('.mensaje').html(html);
-				alert("Error al cambiar la contraseña");
+			return false;
+
 		} 
 	});
-
-	event.preventDefault();
-});
+}
 
 function cargarSession(cod_usuario, nom_usuario, correo, cod_rol, created_at){
 
