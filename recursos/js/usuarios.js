@@ -75,7 +75,7 @@ $('#changePassword').click(function(e){
 	e.preventDefault();
 });
 
-//Función para invocar al formulario de cambiar contraseña
+//Función para invocar al formulario de cambiar correo electrónico
 $('#changeEmail').click(function(e){
 	$('#menu_seleccionado').empty();
 	$('#menu_seleccionado').load("perfil/changeEmail.php");
@@ -153,7 +153,7 @@ $('#changeEmailForm').submit(function(event){
 	event.preventDefault();
 });
 
-
+//Función para crear las variables de sesión al existir el usuario
 function cargarSession(cod_usuario, nom_usuario, correo, cod_rol, created_at){
 
 	var parametros = {
@@ -178,6 +178,7 @@ function cargarSession(cod_usuario, nom_usuario, correo, cod_rol, created_at){
 	});
 }
 
+//Función para limpiar los campos
 function limpiar(){
 	$('#nom_usuario').val("");
 	$('#correo').val("");

@@ -3,6 +3,7 @@ $(document).ready(function () {
 });
 
 //Función para cargar la lista de roles por medio de una petición ajax a un servicio web
+//La respuesta del servidor se asigna al campo de selección de roles en el formulario de registro de usuarios
 function cargarRoles() {
 	$.ajax({
 		url: 'http://localhost/PPI/ajax/roles.php?apiroles=leer_roles',

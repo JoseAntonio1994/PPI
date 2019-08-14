@@ -1,3 +1,4 @@
+//Realizamos una petición al servidor para saber si hay una sesión activa
 $(document).ready(function () {
     //cargarModulos();
     $.ajax({

@@ -2,6 +2,7 @@ $(document).ready(function () {
     $('#conf').hide();  
 });
 
+//Función para verificar que la contraseña proporcionada coincida
 var cambioDePass = function() {
 
         var cod_usuario = $('#cod_usuario').val();

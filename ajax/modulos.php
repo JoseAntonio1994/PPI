@@ -44,6 +44,7 @@ if (isset($_GET['apimodulos']))
 	$response["message"] = "Error al mostrar los modulos";
 }
 
+//Recibimos un json con la respuesta del servidor
 echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
 ?>
