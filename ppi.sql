@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-06-2019 a las 19:59:10
+-- Tiempo de generación: 15-08-2019 a las 19:37:55
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.4
 
@@ -629,26 +629,87 @@ CREATE TABLE `jefedepto` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `permisos`
+-- Estructura de tabla para la tabla `modulos`
 --
 
-CREATE TABLE `permisos` (
-  `idpermisos` int(11) NOT NULL,
-  `nom_permiso` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+CREATE TABLE `modulos` (
+  `cod_modulo` int(11) NOT NULL,
+  `nom_modulo` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `permisos`
+-- Volcado de datos para la tabla `modulos`
 --
 
-INSERT INTO `permisos` (`idpermisos`, `nom_permiso`, `created_at`, `updated_at`) VALUES
-(1, 'acceso_menu_alumnos', '2019-05-25 20:00:13', NULL),
-(2, 'acceso_menu_docentes', '2019-05-25 20:00:33', NULL),
-(3, 'acceso_menu_jefe', '2019-05-25 20:01:09', NULL),
-(4, 'acceso_menu_administrativo', '2019-05-25 20:02:06', NULL),
-(5, 'acceso_menu_empresa', '2019-05-25 20:02:03', NULL);
+INSERT INTO `modulos` (`cod_modulo`, `nom_modulo`) VALUES
+(1, 'ALUMNOS'),
+(2, 'DOCENTES'),
+(3, 'JEFE DE DEPARTAMENTO'),
+(4, 'ADMINISTRATIVOS'),
+(5, 'EMPRESAS');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `modulos_has_sistemas`
+--
+
+CREATE TABLE `modulos_has_sistemas` (
+  `cod_mod_sis` int(11) NOT NULL,
+  `cod_modulo` int(11) NOT NULL,
+  `cod_sistema` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `modulos_has_sistemas`
+--
+
+INSERT INTO `modulos_has_sistemas` (`cod_mod_sis`, `cod_modulo`, `cod_sistema`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 1, 3),
+(4, 1, 4),
+(5, 1, 5),
+(6, 1, 6),
+(7, 1, 7),
+(8, 1, 8),
+(9, 1, 9),
+(10, 1, 10),
+(11, 1, 11),
+(12, 2, 1),
+(13, 2, 2),
+(14, 2, 3),
+(15, 2, 4),
+(16, 2, 5),
+(17, 2, 7),
+(18, 2, 8),
+(19, 2, 10),
+(20, 2, 11),
+(21, 3, 1),
+(22, 3, 3),
+(23, 3, 4),
+(24, 3, 5),
+(25, 3, 7),
+(26, 3, 8),
+(27, 3, 10),
+(28, 3, 11),
+(29, 4, 1),
+(30, 4, 2),
+(31, 4, 3),
+(32, 4, 4),
+(33, 4, 5),
+(34, 4, 6),
+(35, 4, 7),
+(36, 4, 8),
+(37, 4, 9),
+(38, 4, 10),
+(39, 4, 11),
+(40, 5, 3),
+(41, 5, 4),
+(42, 5, 6),
+(43, 5, 7),
+(44, 5, 9),
+(45, 5, 10);
 
 -- --------------------------------------------------------
 
@@ -657,8 +718,8 @@ INSERT INTO `permisos` (`idpermisos`, `nom_permiso`, `created_at`, `updated_at`)
 --
 
 CREATE TABLE `roles` (
-  `idroles` int(11) NOT NULL,
-  `nom_rol` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cod_rol` int(11) NOT NULL,
+  `nom_rol` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -667,7 +728,7 @@ CREATE TABLE `roles` (
 -- Volcado de datos para la tabla `roles`
 --
 
-INSERT INTO `roles` (`idroles`, `nom_rol`, `created_at`, `updated_at`) VALUES
+INSERT INTO `roles` (`cod_rol`, `nom_rol`, `created_at`, `updated_at`) VALUES
 (1, 'Administrador', '2019-05-25 19:56:28', NULL),
 (2, 'Alumno', '2019-05-25 19:56:28', NULL),
 (3, 'Docente', '2019-05-25 19:57:06', NULL),
@@ -682,16 +743,16 @@ INSERT INTO `roles` (`idroles`, `nom_rol`, `created_at`, `updated_at`) VALUES
 --
 
 CREATE TABLE `roles_has_permisos` (
-  `id` int(11) NOT NULL,
-  `idroles` int(11) NOT NULL,
-  `idpermisos` int(11) NOT NULL
+  `cod_rol_permiso` int(11) NOT NULL,
+  `cod_rol` int(11) NOT NULL,
+  `cod_modulo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `roles_has_permisos`
 --
 
-INSERT INTO `roles_has_permisos` (`id`, `idroles`, `idpermisos`) VALUES
+INSERT INTO `roles_has_permisos` (`cod_rol_permiso`, `cod_rol`, `cod_modulo`) VALUES
 (1, 1, 1),
 (2, 1, 2),
 (3, 1, 3),
@@ -706,15 +767,44 @@ INSERT INTO `roles_has_permisos` (`id`, `idroles`, `idpermisos`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `sistemas`
+--
+
+CREATE TABLE `sistemas` (
+  `cod_sistema` int(11) NOT NULL,
+  `img_sistema` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `nom_sistema` varchar(60) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `sistemas`
+--
+
+INSERT INTO `sistemas` (`cod_sistema`, `img_sistema`, `nom_sistema`) VALUES
+(1, 'recursos/img/creditos.png', 'Créditos complementarios'),
+(2, 'recursos/img/tutorias.png', 'Tutorias'),
+(3, 'recursos/img/eventos.png', 'Eventos institucionales'),
+(4, 'recursos/img/visitas.png', 'Visitas industriales'),
+(5, 'recursos/img/verano.png', 'Cursos de verano'),
+(6, 'recursos/img/servicio.png', 'Servicio social'),
+(7, 'recursos/img/residencias.png', 'Residencias profesionales'),
+(8, 'recursos/img/titulacion.png', 'Titulación integral'),
+(9, 'recursos/img/egresados.png', 'Seguimiento de egresados'),
+(10, 'recursos/img/difusion.png', 'Difusión'),
+(11, 'recursos/img/revista.png', 'Revista académica');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
 CREATE TABLE `usuarios` (
-  `idusuarios` int(11) NOT NULL,
+  `cod_usuario` int(11) NOT NULL,
   `nom_usuario` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `correo` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `idroles` int(11) NOT NULL,
+  `cod_rol` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -723,16 +813,24 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`idusuarios`, `nom_usuario`, `correo`, `password`, `idroles`, `created_at`, `updated_at`) VALUES
-(1, 'JoseFlores', 'corazon_oro72@hotmail.com', '$2y$10$riHk81rX7gfjt.89Wkz93O12AWLoMQnWuicFqHqSatpGYBnVBD8C2', 1, '2019-05-28 06:06:15', NULL),
-(2, 'Fernando', 'fernando@gmail.com', '$2y$10$cKcylWhk1Mj39n.BRWImIu5NzhUfR9aZpGvHUmF7ex5puvYHI0OAq', 2, '2019-05-28 06:06:47', NULL),
+INSERT INTO `usuarios` (`cod_usuario`, `nom_usuario`, `correo`, `password`, `cod_rol`, `created_at`, `updated_at`) VALUES
+(1, 'JoseFlores', 'corazon_oro72@hotmail.com', '$2y$10$25GU/a/b3anFkIKV/e3kk.KAp2Gb/3NNrE8TAShsjeiJUZmNOrRpO', 1, '2019-05-28 06:06:15', NULL),
+(2, 'Fernando', 'admin@gmail.com', '$2y$10$yfdzI5HcDPduNb0d0Kjlo.2eZkj9zCbiCXlo2QS85KQYGCQNqmJs6', 2, '2019-05-28 06:06:47', NULL),
 (3, 'Luisito', 'luisito_comunica@gmail.com', '$2y$10$604QY6eRAGbVz5MUmvvJtur4rStmckzmF1Y8.7aXcpDnvT6sjlIna', 3, '2019-05-28 06:07:18', NULL),
-(4, 'Lezama', 'juan_robles@gmail.com', '$2y$10$x63ArBkmqvlf2SahjN.2Je9hgGlDO7AyhMqi6Q.2UwQ3oywcujKwC', 4, '2019-05-28 06:07:51', NULL),
+(4, 'Lezama', 'lezama@gmail.com', '$2y$10$rxhUhFqkkCMHtUQZLNdSt.DrE8p9Sd8dejMirtUsqrfhFSGi70SxW', 4, '2019-05-28 06:07:51', NULL),
 (5, 'Emily', 'emily@gmail.com', '$2y$10$RGEOfICWV4J3N4oRqc3apOF9L3W.X9xP5yhlf0brmnjOtYn2GVlKO', 5, '2019-05-28 06:08:29', NULL),
 (6, 'SIRE', 'siregob@outlook.com', '$2y$10$Mzs/LFMHdjfp4Bh5HcC9U.K.vh1BBneqGdQ1v6vlEoSFKbWV/R/Xe', 6, '2019-05-28 06:09:09', NULL),
 (7, 'Grupo FEMSA', 'femsa1887@gmail.com', '$2y$10$pUWJT2l65T1QG3Vmnl1f..lSNInKi1mYXwI2VSrneiuLMJe2dfdaq', 6, '2019-05-30 02:50:04', NULL),
 (8, 'Jair Camarillo', 'jair@outlook.com', '$2y$10$mTTFdC0V8ejgL0Z02rnV7.IS6m1B4oOqhfxo04vpYyfME.H3/Ol32', 2, '2019-05-30 02:57:13', NULL),
-(9, 'Daniel Amoros', 'amoros@gmail.com', '$2y$10$e/ktEcY7awvmFr6p1If5OORQgMOOieG3Qcrxsp4iMusuy9t8zMynq', 2, '2019-05-30 03:44:42', NULL);
+(9, 'Daniel Amoros', 'amoros@gmail.com', '$2y$10$e/ktEcY7awvmFr6p1If5OORQgMOOieG3Qcrxsp4iMusuy9t8zMynq', 2, '2019-05-30 03:44:42', NULL),
+(10, 'Felipe', 'felipe@griver.com.mx', '$2y$10$j3awO0IhTSOvHiwtKrsNWePTdU8tqgb.a00jFoXY5kP/rynIJ0b4K', 3, '2019-07-29 05:41:44', NULL),
+(14, 'Keren', 'keren@outlook.com', '$2y$10$qct/vdbaFZpG8l4W9a1JV.qbSOFoBFUVtq2EdzAAAN1O7RwXoEMcG', 4, '2019-07-29 05:51:16', NULL),
+(15, 'Mariana', 'mariana@itver.com.mx', '$2y$10$yPTgsrZMG/Vl0FeoreLfiOZaPuyHjEu8rQFh6BQCp9HhsTfd2k86.', 5, '2019-07-29 06:11:38', NULL),
+(16, 'Yessica', 'yessica@griver.com.mx', '$2y$10$mv0Gvc9cUk2PG4JvglPdh.MveSsWbIQ/NIbvEUhe.H1gf9oLTu4WW', 6, '2019-07-29 06:16:02', NULL),
+(17, 'Juan Carmona', 'juan@itver.edu.mx', '$2y$10$nMJloxKMsrzNTwYGk6x2U.06wv31cCO/qCBHVJ7nUKqWp1o2w4s2K', 6, '2019-08-06 04:07:21', NULL),
+(18, 'Yuri', 'yuri13@outlook.com', '$2y$10$xj9UO3j32d5wUZj.SzbgSen7smJ8VAEL6sP4gcgRJWYdUjvBorrdu', 4, '2019-08-10 03:40:59', NULL),
+(19, 'Cruzado', 'jesus@itver.edu.mx', '$2y$10$MpwXUn4I5.JNWZlF41kfnOd4b47wkXsOGOt4uiKX8Icl6u6Uk7KOi', 3, '2019-08-14 09:55:10', NULL),
+(20, 'Hugo', 'hugo@itver', '$2y$10$AtEjGHQ4hhFx6Y926vOsN.2Zm/92BImBGlkcbTM0CTPCpaH6mpMeu', 2, '2019-08-15 06:42:46', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -829,31 +927,45 @@ ALTER TABLE `jefedepto`
   ADD KEY `fk_jefe_depto` (`iddepartamento`);
 
 --
--- Indices de la tabla `permisos`
+-- Indices de la tabla `modulos`
 --
-ALTER TABLE `permisos`
-  ADD PRIMARY KEY (`idpermisos`);
+ALTER TABLE `modulos`
+  ADD PRIMARY KEY (`cod_modulo`);
+
+--
+-- Indices de la tabla `modulos_has_sistemas`
+--
+ALTER TABLE `modulos_has_sistemas`
+  ADD PRIMARY KEY (`cod_mod_sis`),
+  ADD KEY `fk_modulo_modulo` (`cod_modulo`),
+  ADD KEY `fk_modulo_sistema` (`cod_sistema`);
 
 --
 -- Indices de la tabla `roles`
 --
 ALTER TABLE `roles`
-  ADD PRIMARY KEY (`idroles`);
+  ADD PRIMARY KEY (`cod_rol`);
 
 --
 -- Indices de la tabla `roles_has_permisos`
 --
 ALTER TABLE `roles_has_permisos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_rol_rol` (`idroles`),
-  ADD KEY `fk_rol_permiso` (`idpermisos`);
+  ADD PRIMARY KEY (`cod_rol_permiso`),
+  ADD KEY `fk_rol_rol` (`cod_rol`),
+  ADD KEY `fk_rol_modulos` (`cod_modulo`);
+
+--
+-- Indices de la tabla `sistemas`
+--
+ALTER TABLE `sistemas`
+  ADD PRIMARY KEY (`cod_sistema`);
 
 --
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`idusuarios`),
-  ADD KEY `fk_usuario_roles` (`idroles`);
+  ADD PRIMARY KEY (`cod_usuario`),
+  ADD KEY `fk_usuario_roles` (`cod_rol`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -932,28 +1044,40 @@ ALTER TABLE `jefedepto`
   MODIFY `idjefedepto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `permisos`
+-- AUTO_INCREMENT de la tabla `modulos`
 --
-ALTER TABLE `permisos`
-  MODIFY `idpermisos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `modulos`
+  MODIFY `cod_modulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `modulos_has_sistemas`
+--
+ALTER TABLE `modulos_has_sistemas`
+  MODIFY `cod_mod_sis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `idroles` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `cod_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `roles_has_permisos`
 --
 ALTER TABLE `roles_has_permisos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `cod_rol_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `sistemas`
+--
+ALTER TABLE `sistemas`
+  MODIFY `cod_sistema` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idusuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `cod_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Restricciones para tablas volcadas
@@ -1012,17 +1136,24 @@ ALTER TABLE `jefedepto`
   ADD CONSTRAINT `fk_jefe_esco` FOREIGN KEY (`idescolaridad`) REFERENCES `escolaridad` (`idescolaridad`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Filtros para la tabla `modulos_has_sistemas`
+--
+ALTER TABLE `modulos_has_sistemas`
+  ADD CONSTRAINT `fk_modulo_modulo` FOREIGN KEY (`cod_modulo`) REFERENCES `modulos` (`cod_modulo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_modulo_sistema` FOREIGN KEY (`cod_sistema`) REFERENCES `sistemas` (`cod_sistema`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Filtros para la tabla `roles_has_permisos`
 --
 ALTER TABLE `roles_has_permisos`
-  ADD CONSTRAINT `fk_rol_permiso` FOREIGN KEY (`idpermisos`) REFERENCES `permisos` (`idpermisos`),
-  ADD CONSTRAINT `fk_rol_rol` FOREIGN KEY (`idroles`) REFERENCES `roles` (`idroles`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_rol_modulos` FOREIGN KEY (`cod_modulo`) REFERENCES `modulos` (`cod_modulo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_rol_rol` FOREIGN KEY (`cod_rol`) REFERENCES `roles` (`cod_rol`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD CONSTRAINT `fk_usuario_roles` FOREIGN KEY (`idroles`) REFERENCES `roles` (`idroles`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_usuario_roles` FOREIGN KEY (`cod_rol`) REFERENCES `roles` (`cod_rol`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
